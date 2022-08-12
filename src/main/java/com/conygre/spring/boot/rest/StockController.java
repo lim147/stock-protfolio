@@ -28,35 +28,35 @@ public class StockController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
-	public Stock getCdById(@PathVariable("id") int id) {
+	public Stock getStockById(@PathVariable("id") int id) {
 		return service.getStockById(id);
 	}
 
 	@RequestMapping(method=RequestMethod.GET, value="/404/{id}")
 	public ResponseEntity<Stock> getByIdWith404(@PathVariable("id") int id) {
-		Stock disc = service.getStockById(id);
-		if (disc == null) {
+		Stock stock = service.getStockById(id);
+		if (stock == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		else {
-			return new ResponseEntity<>(disc, HttpStatus.OK);
+			return new ResponseEntity<>(stock, HttpStatus.OK);
 		}
 	}
 
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-	public void deleteCd(@PathVariable("id") int id) {
+	public void deleteStock(@PathVariable("id") int id) {
 		service.deleteStock(id);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE)
-	public void deleteCd(@RequestBody Stock disc) {
-		service.deleteStock(disc);
+	public void deleteStock(@RequestBody Stock stock) {
+		service.deleteStock(stock);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void addCd(@RequestBody Stock disc) {
-		service.addNewStock(disc);
+	public void addStock(@RequestBody Stock stock) {
+		service.addNewStock(stock);
 	}
 
 }
