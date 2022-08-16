@@ -10,7 +10,7 @@ import java.util.List;
 
 
 // add an annotations specifying the table that this will map to
-@Entity @Table(name="stock")
+@Entity @Table(name="stocks")
 
 // Adding caching
 //@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
