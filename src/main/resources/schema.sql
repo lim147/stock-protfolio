@@ -3,9 +3,9 @@ DROP TABLE IF EXISTS transactions;
 
 CREATE TABLE stocks
   (
-     symbol VARCHAR (50) PRIMARY KEY,
-     name   VARCHAR(30),
-     qty    INT
+     symbol              VARCHAR (50) PRIMARY KEY,
+     name                VARCHAR(30),
+     qty                 INT
   );
 
 CREATE TABLE transactions
