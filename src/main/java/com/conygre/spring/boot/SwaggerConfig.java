@@ -11,7 +11,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
-@Profile("!test") // here to fix a bug in swagger since swagger messes up the test class
+@Profile("!test")
 
 public class SwaggerConfig {
     @Bean
@@ -26,8 +26,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Album REST API with Swagger")
-                .description("This API allows you to interact with albums. It is a CRUD API")
+                .title("Stocks REST API with Swagger")
+                .description("This API allows you to interact with stocks. It is a CRUD API")
                 //.termsOfServiceUrl("http://www.conygre.com")
                 //.contact(new Contact("Nick Todd", "http://www.conygre.com", "nick.todd@conygre.com"))
                 //.license("Apache License Version 2.0")
