@@ -1,17 +1,20 @@
 package com.conygre.spring.boot.services;
 
 import com.conygre.spring.boot.entities.Stock;
+import java.util.Collection;
 
 public interface StockService {
-	Iterable<Stock> getAllStocks();
+	Collection<Stock> getAllStocks();
+
+/*	Collection<Stock> getLatestTransactions();
+
+	Collection<Stock> getStockBySymbol();
+
+	Collection<Stock> getStocksByName();
+
+	Collection<Stock> getStocksByType();*/
+
+	void buyStock(Stock stock);
 	
-	Stock getStockById(int id);
-	
-	Stock addNewStock(Stock disc);
-		
-	void deleteStock(int id);
-	
-	void deleteStock(Stock disc);
-	
-	Stock updateStock(Stock disc);
+	void sellStock(Stock stock);
 }

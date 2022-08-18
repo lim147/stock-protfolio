@@ -1,37 +1,15 @@
-// This entity class uses annotations instead of the mapping XML file
-
 package com.conygre.spring.boot.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 
 // add an annotations specifying the table that this will map to
-@Entity @Table(name="stocks")
-
-// Adding caching
-//@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
-//@Cacheable
-
-// ensure that the class implements Serializable
-
-
-// TODO: do we need this JPQL query?
-//@NamedQueries(
-//        {
-//                @NamedQuery(name="stock.getAll",
-//                        query="select cd from Stock as cd where cd.price > :price",
-//                        hints = {@QueryHint(name = "org.hibernate.cacheable", value = "true")})
-//        })
-
-
+@Entity
+@Table(name="stocks")
 
 public class Stock implements Serializable {
-
-
     // add an attribute specifying a column for the id property
     // add attributes to ensure that the id column is automantically generated
     @Id

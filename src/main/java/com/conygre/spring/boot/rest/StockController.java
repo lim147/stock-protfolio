@@ -10,53 +10,28 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping("/api/stocks")
-@CrossOrigin // allows requests from all domains
+@CrossOrigin
 public class StockController {
-
-	private static Logger logger = LogManager.getLogger(StockController.class);
-
 	@Autowired
 	private StockService service;
 
-	@ApiOperation(value = "findAll", nickname = "findAll")
+	@ApiOperation(value = "getAllStocks", nickname = "getAllStocks")
 	@RequestMapping(method = RequestMethod.GET)
-	public Iterable<Stock> findAll() {
-		logger.info("managed to call a Get request for findAll");
+	public Collection<Stock> getAllStocks() {
 		return service.getAllStocks();
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
-	public Stock getStockById(@PathVariable("id") int id) {
-		return service.getStockById(id);
-	}
-
-	@RequestMapping(method=RequestMethod.GET, value="/404/{id}")
-	public ResponseEntity<Stock> getByIdWith404(@PathVariable("id") int id) {
-		Stock stock = service.getStockById(id);
-		if (stock == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		else {
-			return new ResponseEntity<>(stock, HttpStatus.OK);
-		}
-	}
-
-
-	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-	public void deleteStock(@PathVariable("id") int id) {
-		service.deleteStock(id);
+	@RequestMapping(method = RequestMethod.POST)
+	public void buyStock(@RequestBody Stock stock) {
+		service.buyStock(stock);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE)
-	public void deleteStock(@RequestBody Stock stock) {
-		service.deleteStock(stock);
+	public void sellStock(@RequestBody Stock stock) {
+		service.sellStock(stock);
 	}
-
-	@RequestMapping(method = RequestMethod.POST)
-	public void addStock(@RequestBody Stock stock) {
-		service.addNewStock(stock);
-	}
-
 }
