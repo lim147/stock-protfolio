@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS conygre;
 
 USE conygre;
 
-CREATE TABLE stocks
+CREATE TABLE IF NOT EXISTS stocks
   (
      id                  INT PRIMARY KEY auto_increment,
      symbol              VARCHAR (50),

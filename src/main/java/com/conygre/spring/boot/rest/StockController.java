@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/stocks")
-@CrossOrigin // allows requests from all domains
+@CrossOrigin
 public class StockController {
 
 	private static Logger logger = LogManager.getLogger(StockController.class);
