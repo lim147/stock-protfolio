@@ -20,8 +20,13 @@ public class TransactionImpl implements TransactionService{
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public Collection<Transaction> getAllTransactions() {
-        logger.info("[INFO]: get all stocks");
+        logger.info("[INFO]: get all transactions");
         return dao.findAll();
     }
 
+    @Override
+    public Iterable<Transaction> getTransactionBySymbol(String symbol) {
+        Iterable<Transaction> transaction_list = dao.findBySymbol(symbol);
+        return transaction_list;
+    }
 }

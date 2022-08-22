@@ -23,13 +23,10 @@ public class TransactionController{
         return service.getAllTransactions();
     }
 
-//    @RequestMapping(method = RequestMethod.POST)
-//    public void buyStock(@RequestBody Stock stock) {
-//        service.buyStock(stock);
-//    }
-//
-//    @RequestMapping(method = RequestMethod.DELETE)
-//    public void sellStock(@RequestBody Stock stock) {
-//        service.sellStock(stock);
-//    }
+    @RequestMapping(method = RequestMethod.GET, value = "/{symbol}")
+    public Iterable<Transaction> getCdById(@PathVariable("symbol") String symbol) {
+        return service.getTransactionBySymbol(symbol);
+    }
+
+
 }

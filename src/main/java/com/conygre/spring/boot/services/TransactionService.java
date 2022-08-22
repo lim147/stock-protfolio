@@ -9,4 +9,6 @@ import java.util.Collection;
 public interface TransactionService {
 
     Collection<Transaction> getAllTransactions();
+
+    Iterable<Transaction> getTransactionBySymbol(String symbol);
 }
