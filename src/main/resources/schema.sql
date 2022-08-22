@@ -10,7 +10,8 @@ CREATE TABLE stocks
 
 CREATE TABLE transactions
   (
-     symbol              VARCHAR (50) PRIMARY KEY,
+     id                  INT PRIMARY KEY,
+     symbol              VARCHAR (50),
      submitted_date_time DATETIME,
      submitted_price     DOUBLE,
      qty                 INT,

@@ -9,6 +9,9 @@ import java.time.LocalDateTime;
 
 public class Transaction implements Serializable{
     @Id
+    @Column(name="id")
+    private int id;
+
     @Column(name="symbol")
     private String symbol;
 
@@ -19,7 +22,8 @@ public class Transaction implements Serializable{
 
     public Transaction() {}
 
-    public Transaction(String symbol, LocalDateTime submittedDateTime, Double submittedPrice, Integer qty, Integer type) {
+    public Transaction(int id, String symbol, LocalDateTime submittedDateTime, Double submittedPrice, Integer qty, Integer type) {
+        this.id = id;
         this.symbol = symbol;
         this.submittedDateTime = submittedDateTime;
         this.submittedPrice = submittedPrice;
