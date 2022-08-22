@@ -9,12 +9,11 @@ import java.time.LocalDateTime;
 
 public class Transaction implements Serializable{
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
 
-    @Column(name="symbol")
-    private String symbol;
-
+    @Column(name="symbol") private String symbol;
     @Column(name="submitted_date_time") private LocalDateTime submittedDateTime;
     @Column(name="submitted_price") private Double submittedPrice;
     @Column(name="qty") private Integer qty;
@@ -29,6 +28,14 @@ public class Transaction implements Serializable{
         this.submittedPrice = submittedPrice;
         this.qty = qty;
         this.type = type;
+    }
+
+    public Integer getId(){
+        return id;
+    }
+    
+    public void setId(Integer s){
+        id = s;
     }
 
     public String getSymbol() {
