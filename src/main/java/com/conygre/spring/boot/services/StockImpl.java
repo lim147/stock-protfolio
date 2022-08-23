@@ -25,6 +25,18 @@ public class StockImpl implements StockService {
 	}
 
 	@Override
+	public Iterable<Stock> getStockBySymbol(String symbol) {
+		logger.info("[INFO]: get all stocks by symbol");
+		return dao.findStockBySymbol(symbol);
+	}
+
+	@Override
+	public Iterable<Stock> getStocksByName(String name) {
+		logger.info("[INFO]: get all stocks by Name");
+		return dao.findStockByName(name);
+	}
+
+	@Override
 	public void buyStock(Stock stock) {
 		dao.save(stock);
 	}

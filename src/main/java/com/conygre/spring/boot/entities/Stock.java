@@ -10,6 +10,7 @@ import javax.persistence.*;
 
 public class Stock implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="symbol")
     private String symbol;
 

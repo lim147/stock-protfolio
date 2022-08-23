@@ -8,11 +8,13 @@ public interface StockService {
 
 /*	Collection<Stock> getLatestTransactions();
 
-	Collection<Stock> getStockBySymbol();
+	Collection<Stock> getStocksByType();
+ */
 
-	Collection<Stock> getStocksByName();
+	Iterable<Stock> getStockBySymbol(String symbol);
 
-	Collection<Stock> getStocksByType();*/
+	Iterable<Stock> getStocksByName(String name);
+
 
 	void buyStock(Stock stock);
 	
