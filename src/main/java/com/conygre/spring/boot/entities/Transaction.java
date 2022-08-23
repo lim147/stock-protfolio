@@ -1,8 +1,9 @@
 package com.conygre.spring.boot.entities;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import javax.persistence.*;
 
 @Entity
 @Table(name="transactions")
@@ -10,10 +11,12 @@ import java.time.LocalDateTime;
 public class Transaction implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+    @Column(name="id") private int id;
 
-    @Column(name="symbol") private String symbol;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="stock_symbol")
+    private Stock stock;
+
     @Column(name="submitted_date_time") private LocalDateTime submittedDateTime;
     @Column(name="submitted_price") private Double submittedPrice;
     @Column(name="qty") private Integer qty;
@@ -21,9 +24,9 @@ public class Transaction implements Serializable{
 
     public Transaction() {}
 
-    public Transaction(int id, String symbol, LocalDateTime submittedDateTime, Double submittedPrice, Integer qty, Integer type) {
+    public Transaction(int id, Stock stock, LocalDateTime submittedDateTime, Double submittedPrice, Integer qty, Integer type) {
         this.id = id;
-        this.symbol = symbol;
+        this.stock = stock;
         this.submittedDateTime = submittedDateTime;
         this.submittedPrice = submittedPrice;
         this.qty = qty;
@@ -38,12 +41,13 @@ public class Transaction implements Serializable{
         id = s;
     }
 
-    public String getSymbol() {
-        return symbol;
+    @JsonBackReference
+    public Stock getStock() {
+        return stock;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
+    public void setStock(Stock stock) {
+        this.stock = stock;
     }
 
     public LocalDateTime getSubmittedDateTime() {

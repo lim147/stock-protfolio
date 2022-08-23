@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Collection;
 
 @Service
@@ -25,8 +24,8 @@ public class TransactionImpl implements TransactionService{
     }
 
     @Override
-    public Iterable<Transaction> getTransactionBySymbol(String symbol) {
-        Iterable<Transaction> transaction_list = dao.findBySymbol(symbol);
+    public Iterable<Transaction> getTransactionByStockSymbol(String stockSymbol) {
+        Iterable<Transaction> transaction_list = dao.findByStockSymbol(stockSymbol);
         return transaction_list;
     }
 }
