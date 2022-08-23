@@ -24,7 +24,7 @@ public class TransactionSerializer extends StdSerializer<Transaction> {
         jgen.writeStringField("submittedDateTime", transaction.getSubmittedDateTime().toString());
         jgen.writeNumberField("submittedPrice", transaction.getSubmittedPrice());
         jgen.writeNumberField("qty", transaction.getQty());
-        jgen.writeNumberField("type", transaction.getType());
+        jgen.writeStringField("type", transaction.getType());
         jgen.writeEndObject();
     }
 }

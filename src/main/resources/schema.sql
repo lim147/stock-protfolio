@@ -15,6 +15,6 @@ CREATE TABLE transactions
      submitted_date_time DATETIME,
      submitted_price     DOUBLE,
      qty                 INT,
-     type                INT,
+     type                VARCHAR (30),
      FOREIGN KEY (stock_symbol) REFERENCES stocks(symbol)
   );
