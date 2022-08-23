@@ -20,9 +20,14 @@ public class TransactionController{
         return service.getAllTransactions();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{stock_symbol}")
+    @RequestMapping(method = RequestMethod.GET, value = "stock-symbol/{stock_symbol}")
     public Iterable<Transaction> getTransactionByStockSymbol(@PathVariable("stock_symbol") String stockSymbol) {
         return service.getTransactionByStockSymbol(stockSymbol);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public Transaction getTransactionById(@PathVariable("id") int id) {
+        return service.getTransactionById(id);
     }
 
 

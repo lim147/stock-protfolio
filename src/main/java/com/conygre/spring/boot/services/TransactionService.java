@@ -8,4 +8,6 @@ public interface TransactionService {
     Collection<Transaction> getAllTransactions();
 
     Iterable<Transaction> getTransactionByStockSymbol(String stockSymbol);
+
+    Transaction getTransactionById(int id);
 }

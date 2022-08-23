@@ -28,4 +28,9 @@ public class TransactionImpl implements TransactionService{
         Iterable<Transaction> transaction_list = dao.findByStockSymbol(stockSymbol);
         return transaction_list;
     }
+
+    @Override
+    public Transaction getTransactionById(int id) {
+        return dao.findById(id);
+    }
 }

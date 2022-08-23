@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
     public Iterable<Transaction> findByStockSymbol(String stockSymbol);
+    public Transaction findById(int id);
 }
