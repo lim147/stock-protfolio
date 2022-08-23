@@ -3,13 +3,8 @@ package com.conygre.spring.boot.rest;
 import com.conygre.spring.boot.entities.Stock;
 import com.conygre.spring.boot.services.StockService;
 import io.swagger.annotations.ApiOperation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collection;
 
 @RestController

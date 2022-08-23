@@ -1,7 +1,9 @@
 package com.conygre.spring.boot.entities;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.*;
 
 @Entity
 @Table(name="stocks")
@@ -45,4 +47,16 @@ public class Stock implements Serializable {
     public void setQty(Integer qty) {
         this.qty = qty;
     }
+
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="stock")
+    private List<Transaction> transactions;
+
+    @JsonManagedReference
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
+	}
 }

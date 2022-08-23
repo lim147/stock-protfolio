@@ -1,16 +1,23 @@
 package com.conygre.spring.boot.entities;
 
-import javax.persistence.*;
+import com.conygre.spring.boot.serializer.TransactionSerializer;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import javax.persistence.*;
 
 @Entity
 @Table(name="transactions")
-
+@JsonSerialize(using = TransactionSerializer.class)
 public class Transaction implements Serializable{
     @Id
-    @Column(name="symbol")
-    private String symbol;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id") private int id;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="stock_symbol")
+    private Stock stock;
 
     @Column(name="submitted_date_time") private LocalDateTime submittedDateTime;
     @Column(name="submitted_price") private Double submittedPrice;
@@ -19,20 +26,30 @@ public class Transaction implements Serializable{
 
     public Transaction() {}
 
-    public Transaction(String symbol, LocalDateTime submittedDateTime, Double submittedPrice, Integer qty, Integer type) {
-        this.symbol = symbol;
+    public Transaction(int id, Stock stock, LocalDateTime submittedDateTime, Double submittedPrice, Integer qty, Integer type) {
+        this.id = id;
+        this.stock = stock;
         this.submittedDateTime = submittedDateTime;
         this.submittedPrice = submittedPrice;
         this.qty = qty;
         this.type = type;
     }
 
-    public String getSymbol() {
-        return symbol;
+    public Integer getId(){
+        return id;
+    }
+    
+    public void setId(Integer s){
+        id = s;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
+    @JsonBackReference
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
     }
 
     public LocalDateTime getSubmittedDateTime() {
