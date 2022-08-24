@@ -10,11 +10,11 @@ CREATE TABLE stocks
 
 CREATE TABLE transactions
   (
-     id                  INT PRIMARY KEY,
+     id                  INT PRIMARY KEY AUTO_INCREMENT,
      stock_symbol        VARCHAR (50),
      submitted_date_time DATETIME,
      submitted_price     DOUBLE,
      qty                 INT,
-     type                INT,
+     type                VARCHAR (30),
      FOREIGN KEY (stock_symbol) REFERENCES stocks(symbol)
   );

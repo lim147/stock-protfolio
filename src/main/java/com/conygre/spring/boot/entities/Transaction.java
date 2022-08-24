@@ -1,13 +1,15 @@
 package com.conygre.spring.boot.entities;
 
+import com.conygre.spring.boot.serializer.TransactionSerializer;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 
 @Entity
 @Table(name="transactions")
-
+@JsonSerialize(using = TransactionSerializer.class)
 public class Transaction implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -20,11 +22,11 @@ public class Transaction implements Serializable{
     @Column(name="submitted_date_time") private LocalDateTime submittedDateTime;
     @Column(name="submitted_price") private Double submittedPrice;
     @Column(name="qty") private Integer qty;
-    @Column(name="type") private Integer type;
+    @Column(name="type") private String type;
 
     public Transaction() {}
 
-    public Transaction(int id, Stock stock, LocalDateTime submittedDateTime, Double submittedPrice, Integer qty, Integer type) {
+    public Transaction(int id, Stock stock, LocalDateTime submittedDateTime, Double submittedPrice, Integer qty, String type) {
         this.id = id;
         this.stock = stock;
         this.submittedDateTime = submittedDateTime;
@@ -74,11 +76,11 @@ public class Transaction implements Serializable{
         this.qty = qty;
     }
 
-    public Integer getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(String type) {
         this.type = type;
     }
 }
