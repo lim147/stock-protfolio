@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Transaction } from '../transaction';
 import { TransactionService } from '../transaction.service';
@@ -8,12 +8,12 @@ import { TransactionService } from '../transaction.service';
   templateUrl: './mainpage.component.html',
   styleUrls: ['./mainpage.component.css']
 })
-export class MainpageComponent {
 
+export class MainpageComponent{
   transactions: Observable<Array<Transaction>>;
-
-  constructor(transactionService: TransactionService) {
+  constructor(transactionService: TransactionService) { 
     this.transactions = transactionService.getAllTransactions();
+
   }
 
 }
