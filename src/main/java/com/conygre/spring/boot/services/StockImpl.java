@@ -46,7 +46,7 @@ public class StockImpl implements StockService {
     @Override
     public void sellStock(Stock stock) {
         logger.info("[INFO]: sell stock");
-        dao.delete(stock);
+        dao.setStockQtyToZero(stock.getSymbol());
     }
 
     @Override

@@ -13,12 +13,18 @@ import java.util.List;
 @Repository
 public interface StockRepository extends JpaRepository<Stock, Integer> {
 
-    public Collection<Stock> findStockByName(String name);
-    public Collection<Stock> findStockBySymbol(String symbol);
+    Collection<Stock> findStockByName(String name);
+
+    Collection<Stock> findStockBySymbol(String symbol);
 
     @Transactional
     @Modifying
-    @Query("update stocks set stocks.qty = stocks.qty+?1 where stocks.symbol = ?2")
-    boolean updateStockQty (Integer qty, String symbol);
+    @Query("update Stock s set s.qty = s.qty+?1 where s.symbol = ?2")
+    void updateStockQty(Integer qty, String symbol);
+
+    @Transactional
+    @Modifying
+    @Query("update Stock s set s.qty = 0 where s.symbol = ?1")
+    void setStockQtyToZero(String symbol);
 
 }

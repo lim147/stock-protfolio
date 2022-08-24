@@ -1,5 +1,6 @@
 package com.conygre.spring.boot.services;
 
+import com.conygre.spring.boot.entities.Stock;
 import com.conygre.spring.boot.entities.Transaction;
 import com.conygre.spring.boot.repos.TransactionRepository;
 import org.apache.logging.log4j.LogManager;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Service
-public class TransactionImpl implements TransactionService{
+public class TransactionImpl implements TransactionService {
     @Autowired
     private TransactionRepository dao;
     private static final Logger logger = LogManager.getLogger(TransactionImpl.class);
@@ -67,5 +68,12 @@ public class TransactionImpl implements TransactionService{
     public void deleteTransactionById(Transaction transaction) {
         int id = transaction.getId();
         dao.deleteById(id);
+    }
+
+    @Override
+    public void deleteAllTransactionBySymbol(Stock stock) {
+        for (Transaction s : dao.findByStockSymbol(stock.getSymbol())) {
+            deleteTransactionById(s);
+        }
     }
 }

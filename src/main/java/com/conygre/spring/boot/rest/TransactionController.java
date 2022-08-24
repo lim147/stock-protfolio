@@ -1,5 +1,6 @@
 package com.conygre.spring.boot.rest;
 
+import com.conygre.spring.boot.entities.Stock;
 import com.conygre.spring.boot.entities.Transaction;
 import com.conygre.spring.boot.services.TransactionService;
 import io.swagger.annotations.ApiOperation;
