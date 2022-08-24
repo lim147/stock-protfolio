@@ -20,4 +20,6 @@ public interface TransactionService {
     Collection<Transaction> getTransactionsBetweenPrice(Double startPrice, Double endPrice);
 
     void addTransaction(Transaction transaction);
+
+    void deleteTransactionById(Transaction transaction);
 }

@@ -63,4 +63,9 @@ public class TransactionImpl implements TransactionService{
         dao.save(transaction);
     }
 
+    @Override
+    public void deleteTransactionById(Transaction transaction) {
+        int id = transaction.getId();
+        dao.deleteById(id);
+    }
 }

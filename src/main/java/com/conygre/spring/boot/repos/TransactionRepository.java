@@ -14,4 +14,5 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     public Collection<Transaction> findByType(String type);
     public Collection<Transaction> findBySubmittedDateTimeBetween(LocalDateTime start, LocalDateTime end);
     public Collection<Transaction> findBySubmittedPriceBetween(Double start, Double end);
+    public void deleteById(int id);
 }
