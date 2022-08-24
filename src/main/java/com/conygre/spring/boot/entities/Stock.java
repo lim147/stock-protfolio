@@ -1,5 +1,6 @@
 package com.conygre.spring.boot.entities;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
@@ -7,10 +8,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="stocks")
-
 public class Stock implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id") private Integer id;
+
     @Column(name="symbol")
     private String symbol;
 

@@ -21,19 +21,25 @@ public class StockController {
         return service.getAllStocks();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{stock_symbol}")
+    @RequestMapping(method = RequestMethod.GET, value = "findstocks/{stock_symbol}")
     public Iterable<Stock> getStocksbySymbol(@PathVariable("stock_symbol") String symbol) {
         return service.getStockBySymbol(symbol);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/{stock_name}")
+    @RequestMapping(method = RequestMethod.GET, value = "findstocks/{stock_name}")
     public Iterable<Stock> getStocksbyName(@PathVariable("stock_name") String name) {
         return service.getStocksByName(name);
     }
 
+
     @RequestMapping(method = RequestMethod.POST)
     public void buyStock(@RequestBody Stock stock) {
-        service.buyStock(stock);
+        if (service.getStockBySymbol(stock.getSymbol()).isEmpty()) {
+            service.buyStock(stock);
+        } else {
+            service.addStockQty(stock);
+        }
+        //todo add transaction
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
