@@ -12,23 +12,9 @@
 </form>
 
 
-
-<p>Transaction table:</p>
-<div *ngFor="let transaction of transactions | async">
-    <p>
-        <span>Id: {{transaction.id}}</span><br>
-        <span>Symbol: {{transaction.stockSymbol}}</span><br>
-        <span>Name: {{transaction.name}}</span><br>
-        <span>Submitted DateTime: {{transaction.submittedDateTime}}</span><br>
-        <span>Submitted Price: {{transaction.submittedPrice}}</span><br>
-        <span>Quantity: {{transaction.qty}}</span><br>
-        <span>Type: {{transaction.type}}</span>
-    </p>
-    <p>Transaction table:</p>
-</div>
-
 <!-- <pre> {{transaction |json}} </pre> -->
-<div>
+<p>Transaction Table:</p>
+<div *ngFor="let transaction of transactions">
     <p>
         <span>Id: {{transaction.id}}</span><br>
         <span>Symbol: {{transaction.stockSymbol}}</span><br>

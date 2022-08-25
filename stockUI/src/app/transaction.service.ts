@@ -8,7 +8,7 @@ import { Transaction } from './transaction';
 })
 export class TransactionService {
 
-  private baseUrl: string = 'http://localhost:8080/api/transactions';
+  private baseUrl: string = 'http://sang-missi-3-portfolio-sang-missi-3-portfolio.openshift83.conygre.com/api/transactions';
 
   constructor(private http: HttpClient) {} 
 

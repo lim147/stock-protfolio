@@ -11,24 +11,28 @@ import { NgForm } from '@angular/forms';
 })
 
 export class MainpageComponent{
-  transactions!: Observable<Array<Transaction>>;
-  transaction!: Transaction;
+  transactions!: Array<Transaction>;
   searchId : number = 1;
 
-  constructor(private transactionService: TransactionService) { 
-    this.transactions = this.transactionService.getAllTransactions();
-  }
+  constructor(private transactionService: TransactionService) { }
 
   ngOnInit() {
-    //this.transactions = this.transactionService.getAllTransactions();
+    this.getAllTransactions();
   }
- 
+
+  getAllTransactions(){
+    this.transactionService.getAllTransactions().subscribe({
+      next: (data:any) => this.transactions = data,
+      error: (_:any)  => console.log("Error")
+    });
+  }
 
   // Add transaction to the transactions list
   searchTransactionById(form: NgForm){
     console.log(this.searchId);
+    this.transactions = [];
     this.transactionService.getTransactionById(this.searchId).subscribe({
-      next: (data:any) => this.transaction = data,
+      next: (data:any) => this.transactions.push(data),
       error: (_:any)  => console.log("Error")
     });
   }
