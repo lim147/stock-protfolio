@@ -26,10 +26,9 @@ export class SearchpageComponent{
     this.getAllTransactions();
   }
 
-  // setSearchFilterType() {
-  //   console.log("Filter: "+this.searchFilterForm));
-  //   this.selectedValue = this.searchFilterForm.value;
-  // }
+  setSearchFilterType() {
+    this.selectedValue = this.searchFilterForm.value.searchFilter;
+  }
 
   getAllTransactions(){
     this.transactionService.getAllTransactions().subscribe({
