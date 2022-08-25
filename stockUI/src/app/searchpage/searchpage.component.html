@@ -1,1 +1,26 @@
 <p>This is the search page</p>
+
+<form #f="ngForm" (ngSubmit)="searchTransactionById(f)">
+    <p>
+        <label>Id</label>
+        <input type="number" [(ngModel)]="searchId" name="searchId" required>
+    </p>
+    <p>
+        <button type="submit" [disabled]="!f.valid">Search</button>
+    </p>
+</form>
+
+
+<!-- <pre> {{transaction |json}} </pre> -->
+<p>Transaction Table:</p>
+<div *ngFor="let transaction of transactions">
+    <p>
+        <span>Id: {{transaction.id}}</span><br>
+        <span>Symbol: {{transaction.stockSymbol}}</span><br>
+        <span>Name: {{transaction.name}}</span><br>
+        <span>Submitted DateTime: {{transaction.submittedDateTime}}</span><br>
+        <span>Submitted Price: {{transaction.submittedPrice}}</span><br>
+        <span>Quantity: {{transaction.qty}}</span><br>
+        <span>Type: {{transaction.type}}</span>
+    </p>
+</div>
