@@ -8,8 +8,8 @@ import { Stock } from './stock';
 })
 export class StockService {
 
-  //private baseUrl: string = 'http://sang-missi-3-portfolio-sang-missi-3-portfolio.openshift83.conygre.com/api/stocks';
-  private baseUrl: string = 'http://localhost:8080/api/stocks';
+  private baseUrl: string = 'http://sang-missi-3-portfolio-sang-missi-3-portfolio.openshift83.conygre.com/api/stocks';
+  //private baseUrl: string = 'http://localhost:8080/api/stocks';
   
   constructor(private http: HttpClient) {} 
 
