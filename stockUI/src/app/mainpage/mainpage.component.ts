@@ -12,6 +12,10 @@ import { NgForm } from '@angular/forms';
 export class MainpageComponent {
   stocks! : Array<Stock>;
   searchSymbol! : string;
+  searchName! : string;
+  stockToBuyName! : string;
+  stockToBuyQty! : number;
+  stockToBuySymbol! : string;
 
   constructor(private stockService : StockService) { }
 
@@ -29,6 +33,22 @@ export class MainpageComponent {
   searchStockBySymbol(form: NgForm){
     this.stocks = [];
     this.stockService.getStockBySymbol(this.searchSymbol).subscribe({
+      next: (data:any) => this.stocks.push(data),
+      error: (_:any)  => console.log("Error")
+    });
+  }
+
+  searchStockByName(form: NgForm){
+    this.stocks = [];
+    this.stockService.getStockByName(this.searchName).subscribe({
+      next: (data:any) => this.stocks.push(data),
+      error: (_:any)  => console.log("Error")
+    });
+  }
+
+  buyStock(form: NgForm){
+    this.stocks = [];
+    this.stockService.buyStock(this.stockToBuySymbol, this.stockToBuyName, this.stockToBuyQty).subscribe({
       next: (data:any) => this.stocks.push(data),
       error: (_:any)  => console.log("Error")
     });
