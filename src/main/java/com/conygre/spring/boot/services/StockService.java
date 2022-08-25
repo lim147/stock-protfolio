@@ -12,7 +12,9 @@ public interface StockService {
 
 	void buyStock(Stock stock);
 	
-	void sellStock(Stock stock);
+	void decreaseStockQty(Stock stock);
+
+	void decreaseStockQtyToZero(Stock stock);
 
 	void addStockQty(Stock stock);
 }

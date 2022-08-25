@@ -43,6 +43,25 @@
     </p>
 </form>
 
+<!-- By a stock: -->
+<form #f="ngForm" (ngSubmit)="  sellStock(f)">
+    <p>
+        <label>Symbol</label>
+        <input type="text" [(ngModel)]="stockToSellSymbol" name="stockToSellSymbol" required>
+    </p>
+    <p>
+        <label>Name</label>
+        <input type="text" [(ngModel)]="stockToSellName" name="stockToSellName" required>
+    </p>
+    <p>
+        <label>Quantity</label>
+        <input type="number" [(ngModel)]="stockToSellQty" name="stockToSellQty" required>
+    </p>
+    <p>
+        <button type="submit">Sell stock</button>
+    </p>
+</form>
+
 
 
 <p>Stock Table:</p>

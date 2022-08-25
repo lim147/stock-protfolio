@@ -8,7 +8,8 @@ import { Stock } from './stock';
 })
 export class StockService {
 
-  private baseUrl: string = 'http://sang-missi-3-portfolio-sang-missi-3-portfolio.openshift83.conygre.com/api/stocks';
+  //private baseUrl: string = 'http://sang-missi-3-portfolio-sang-missi-3-portfolio.openshift83.conygre.com/api/stocks';
+  private baseUrl: string = 'http://localhost:8080/api/stocks';
   
   constructor(private http: HttpClient) {} 
 
@@ -30,6 +31,17 @@ export class StockService {
     const body = JSON.stringify(stock);
     return this.http.post(this.baseUrl, body, {'headers':headers});
   }
+
+  sellStock(stockSymbol:string, stockName: string, stockQuantity: number) : Observable<any>{
+    const stock = new Stock(stockSymbol, stockName, stockQuantity);
+    const options = {
+      headers: { 'content-type': 'application/json'},
+      body: JSON.stringify(stock)
+    }
+    return this.http.delete(this.baseUrl, options);
+  }
+
+
 
 
 }
