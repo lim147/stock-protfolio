@@ -1,5 +1,7 @@
 <p>This is the search page</p>
 
+<button (click)="getAllTransactions()">Show All</button>
+
 <form #f="ngForm" (ngSubmit)="searchTransactionById(f)">
     <p>
         <label>Id</label>
