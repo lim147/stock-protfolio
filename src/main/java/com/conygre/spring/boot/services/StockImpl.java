@@ -28,13 +28,13 @@ public class StockImpl implements StockService {
     @Override
     public Collection<Stock> getStockBySymbol(String symbol) {
         logger.info("[INFO]: get all stocks by symbol");
-        return dao.findStockBySymbol(symbol);
+        return dao.findBySymbol(symbol);
     }
 
     @Override
     public Collection<Stock> getStocksByName(String name) {
         logger.info("[INFO]: get all stocks by Name");
-        return dao.findStockByName(name);
+        return dao.findByName(name);
     }
 
     @Override

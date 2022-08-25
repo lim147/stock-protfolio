@@ -27,13 +27,13 @@ public class StockController {
         return stockService.getAllStocks();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "findstocks/{stock_symbol}")
-    public Iterable<Stock> getStocksbySymbol(@PathVariable("stock_symbol") String symbol) {
+    @RequestMapping(method = RequestMethod.GET, value = "stock-symbol/{symbol}")
+    public Collection<Stock> getStocksbySymbol(@PathVariable("symbol") String symbol) {
         return stockService.getStockBySymbol(symbol);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "findstocks/{stock_name}")
-    public Iterable<Stock> getStocksbyName(@PathVariable("stock_name") String name) {
+    @RequestMapping(method = RequestMethod.GET, value = "stock-name/{name}")
+    public Collection<Stock> getStocksbyName(@PathVariable("name") String name) {
         return stockService.getStocksByName(name);
     }
 

@@ -11,9 +11,9 @@ import java.util.Collection;
 @Repository
 public interface StockRepository extends JpaRepository<Stock, Integer> {
 
-    Collection<Stock> findStockByName(String name);
+    Collection<Stock> findByName(String name);
 
-    Collection<Stock> findStockBySymbol(String symbol);
+    Collection<Stock> findBySymbol(String symbol);
 
     @Transactional
     @Modifying
