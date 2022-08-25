@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="stocks")
-
 public class Stock implements Serializable {
     @Id
     @Column(name="symbol")

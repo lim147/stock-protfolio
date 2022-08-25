@@ -6,15 +6,13 @@ import java.util.Collection;
 public interface StockService {
 	Collection<Stock> getAllStocks();
 
-/*	Collection<Stock> getLatestTransactions();
+	Collection<Stock> getStockBySymbol(String symbol);
 
-	Collection<Stock> getStockBySymbol();
-
-	Collection<Stock> getStocksByName();
-
-	Collection<Stock> getStocksByType();*/
+	Collection<Stock> getStocksByName(String name);
 
 	void buyStock(Stock stock);
 	
 	void sellStock(Stock stock);
+
+	void addStockQty(Stock stock);
 }

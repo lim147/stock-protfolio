@@ -1,5 +1,6 @@
 package com.conygre.spring.boot.services;
 
+import com.conygre.spring.boot.entities.Stock;
 import com.conygre.spring.boot.entities.Transaction;
 
 import java.time.LocalDate;
@@ -22,4 +23,6 @@ public interface TransactionService {
     void addTransaction(Transaction transaction);
 
     void deleteTransactionById(Transaction transaction);
+
+    void deleteAllTransactionBySymbol(Stock stock);
 }
