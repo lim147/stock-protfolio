@@ -1,12 +1,10 @@
 package com.conygre.spring.boot.rest;
 
-import com.conygre.spring.boot.entities.Stock;
 import com.conygre.spring.boot.entities.Transaction;
 import com.conygre.spring.boot.services.TransactionService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 import java.util.Collection;
 
@@ -63,6 +61,4 @@ public class TransactionController{
     public void deleteTransactionById(@RequestBody Transaction transaction) {
         service.deleteTransactionById(transaction);
     }
-
-
 }
