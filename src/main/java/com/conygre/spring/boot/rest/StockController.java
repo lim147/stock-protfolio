@@ -53,11 +53,22 @@ public class StockController {
 
     @RequestMapping(method = RequestMethod.DELETE)
     public void sellStock(@RequestBody Stock stock) {
-        stockService.sellStock(stock);
-        Transaction vo = transcVO(stock);
-        vo.setType("SELL");
-        transactionService.addTransaction(vo);
+        // Make sure the stock to be sold is within the stock portfolio
+        if (stockService.getStockBySymbol(stock.getSymbol()) != null){
+            int portfolioQty = stockService.getStockBySymbol(stock.getSymbol()).getQty();
+            // Make sure the quantity of stock being sold is smaller than the stock number in portfolio
+            if (portfolioQty >= stock.getQty()){
+                stockService.decreaseStockQty(stock);
+            }
+            // Otherwise, decrease the stock number in portfolio to 0
+            else{
+                stockService.decreaseStockQtyToZero(stock);
+            }
 
+            Transaction vo = transcVO(stock);
+            vo.setType("SELL");
+            transactionService.addTransaction(vo);
+        }
     }
 
     private Transaction transcVO(@RequestBody Stock stock) {

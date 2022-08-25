@@ -17,11 +17,16 @@ public interface StockRepository extends JpaRepository<Stock, Integer> {
     @Transactional
     @Modifying
     @Query("update Stock s set s.qty = s.qty+?1 where s.symbol = ?2")
-    void updateStockQty(Integer qty, String symbol);
+    void increaseStockQty(int qty, String symbol);
+
+    @Transactional
+    @Modifying
+    @Query("update Stock s set s.qty = s.qty-?1 where s.symbol = ?2")
+    void decreaseStockQty(int qty, String symbol);
 
     @Transactional
     @Modifying
     @Query("update Stock s set s.qty = 0 where s.symbol = ?1")
-    void setStockQtyToZero(String symbol);
+    void decreaseStockQtyToZero(String symbString);
 
 }

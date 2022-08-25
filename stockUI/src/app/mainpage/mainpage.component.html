@@ -1,17 +1,67 @@
 <h1>This is the main page</h1>
 
-
 <button (click)="getAllStocks()">Show All</button>
 
+<!-- Search by symbol: -->
 <form #f="ngForm" (ngSubmit)=" searchStockBySymbol(f)">
     <p>
         <label>Symbol</label>
         <input type="text" [(ngModel)]="searchSymbol" name="searchSymbol" required>
     </p>
     <p>
-        <button type="submit" [disabled]="!f.valid">Search</button>
+        <button type="submit" [disabled]="!f.valid">Search By Symbol</button>
     </p>
 </form>
+
+<!-- Search by name: -->
+<form #f="ngForm" (ngSubmit)=" searchStockByName(f)">
+    <p>
+        <label>Name</label>
+        <input type="text" [(ngModel)]="searchName" name="searchName" required>
+    </p>
+    <p>
+        <button type="submit" [disabled]="!f.valid">Search By Name</button>
+    </p>
+</form>
+
+<!-- By a stock: -->
+<form #f="ngForm" (ngSubmit)="  buyStock(f)">
+    <p>
+        <label>Symbol</label>
+        <input type="text" [(ngModel)]="stockToBuySymbol" name="stockToBuySymbol" required>
+    </p>
+    <p>
+        <label>Name</label>
+        <input type="text" [(ngModel)]="stockToBuyName" name="stockToBuyName" required>
+    </p>
+    <p>
+        <label>Quantity</label>
+        <input type="number" [(ngModel)]="stockToBuyQty" name="stockToBuyQty" required>
+    </p>
+    <p>
+        <button type="submit">Buy stock</button>
+    </p>
+</form>
+
+<!-- By a stock: -->
+<form #f="ngForm" (ngSubmit)="  sellStock(f)">
+    <p>
+        <label>Symbol</label>
+        <input type="text" [(ngModel)]="stockToSellSymbol" name="stockToSellSymbol" required>
+    </p>
+    <p>
+        <label>Name</label>
+        <input type="text" [(ngModel)]="stockToSellName" name="stockToSellName" required>
+    </p>
+    <p>
+        <label>Quantity</label>
+        <input type="number" [(ngModel)]="stockToSellQty" name="stockToSellQty" required>
+    </p>
+    <p>
+        <button type="submit">Sell stock</button>
+    </p>
+</form>
+
 
 
 <p>Stock Table:</p>
