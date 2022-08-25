@@ -6,9 +6,9 @@ import java.util.Collection;
 public interface StockService {
 	Collection<Stock> getAllStocks();
 
-	Collection<Stock> getStockBySymbol(String symbol);
+	Stock getStockBySymbol(String symbol);
 
-	Collection<Stock> getStocksByName(String name);
+	Stock getStockByName(String name);
 
 	void buyStock(Stock stock);
 	

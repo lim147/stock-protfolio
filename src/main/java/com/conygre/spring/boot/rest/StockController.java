@@ -28,19 +28,19 @@ public class StockController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "stock-symbol/{symbol}")
-    public Collection<Stock> getStocksbySymbol(@PathVariable("symbol") String symbol) {
+    public Stock getStockbySymbol(@PathVariable("symbol") String symbol) {
         return stockService.getStockBySymbol(symbol);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "stock-name/{name}")
-    public Collection<Stock> getStocksbyName(@PathVariable("name") String name) {
-        return stockService.getStocksByName(name);
+    public Stock getStockbyName(@PathVariable("name") String name) {
+        return stockService.getStockByName(name);
     }
 
 
     @RequestMapping(method = RequestMethod.POST)
     public void buyStock(@RequestBody Stock stock) {
-        if (stockService.getStockBySymbol(stock.getSymbol()).isEmpty()) {
+        if (stockService.getStockBySymbol(stock.getSymbol()) == null) {
             stockService.buyStock(stock);
         } else {
             stockService.addStockQty(stock);
