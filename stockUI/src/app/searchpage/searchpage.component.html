@@ -2,15 +2,26 @@
 
 <button (click)="getAllTransactions()">Show All</button>
 
-<form #f="ngForm" (ngSubmit)="searchTransactionById(f)">
-    <p>
-        <label>Id</label>
-        <input type="number" [(ngModel)]="searchId" name="searchId" required>
-    </p>
-    <p>
-        <button type="submit" [disabled]="!f.valid">Search</button>
-    </p>
+<form [formGroup]="searchFilterForm">
+    <label>Filter </label>
+    <!-- <select id="searchFilter" formControlName="searchFilter" [(ngModel)]="selectedValue"> -->
+    <!-- <select id="searchFilter" formControlName="searchFilter" (change)="setSearchFilterType()"> -->
+        <!-- <option *ngFor="let filter of searchFilters" [ngValue]="filter">{{ filter }}</option> -->
+    <!-- </select> -->
 </form>
+
+<ng-container *ngIf="selectedValue == 'ID'">
+    <form #f="ngForm" (ngSubmit)="searchTransactionById(f)">
+        <p>
+            <label>Id</label>
+            <input type="number" [(ngModel)]="searchId" name="searchId" required>
+        </p>
+        <p>
+            <button type="submit" [disabled]="!f.valid">Search</button>
+        </p>
+    </form>
+</ng-container>
+
 
 
 <!-- <pre> {{transaction |json}} </pre> -->

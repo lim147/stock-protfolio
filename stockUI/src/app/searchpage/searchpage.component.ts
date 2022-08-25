@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Transaction } from '../transaction';
 import { TransactionService } from '../transaction.service';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { filter } from 'minimatch';
 
 @Component({
   selector: 'app-searchpage',
@@ -9,14 +10,26 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./searchpage.component.css']
 })
 export class SearchpageComponent{
+  searchFilters: string[] = ['ID', 'Symbol', 'Date Range', 'Price Range', 'Transaction Type'];
+  searchFilterForm: FormGroup;
+  selectedValue: any;
   transactions!: Array<Transaction>;
   searchId : number = 1;
 
-  constructor(private transactionService: TransactionService) { }
+  constructor(private transactionService: TransactionService) {
+    this.searchFilterForm = new FormGroup({
+      searchFilter: new FormControl(null)
+    });
+  }
 
   ngOnInit() {
     this.getAllTransactions();
   }
+
+  // setSearchFilterType() {
+  //   console.log("Filter: "+this.searchFilterForm));
+  //   this.selectedValue = this.searchFilterForm.value;
+  // }
 
   getAllTransactions(){
     this.transactionService.getAllTransactions().subscribe({
