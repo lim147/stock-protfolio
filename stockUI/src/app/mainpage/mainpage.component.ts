@@ -1,13 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
+import { Stock } from '../stock';
+import { StockService } from '../stock.service';
+import { NgForm } from '@angular/forms';
+
 @Component({
   selector: 'app-mainpage',
   templateUrl: './mainpage.component.html',
   styleUrls: ['./mainpage.component.css']
 })
 
-export class MainpageComponent implements OnInit {
-  constructor() { }
+export class MainpageComponent {
+  stocks! : Array<Stock>;
+  searchSymbol! : string;
+
+  constructor(private stockService : StockService) { }
 
   ngOnInit(): void {
+    this.getAllStocks();
   }
+
+  getAllStocks(){
+    this.stockService.getAllStocks().subscribe({
+      next: (data:any) => this.stocks = data,
+      error: (_:any)  => console.log("Error")
+    });
+  }
+
+  searchStocknBySymbol(form: NgForm){
+    console.log(this. searchSymbol);
+    this.stocks = [];
+    this.stockService.getStockBySymbol(this.searchSymbol).subscribe({
+      next: (data:any) => this.stocks.push(data),
+      error: (_:any)  => console.log("Error")
+    });
+  }
+
+
 }
+
+

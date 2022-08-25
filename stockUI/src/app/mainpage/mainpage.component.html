@@ -1,1 +1,24 @@
 <h1>This is the main page</h1>
+
+
+<button (click)="getAllStocks()">Show All</button>
+
+<form #f="ngForm" (ngSubmit)=" searchStocknBySymbol(f)">
+    <p>
+        <label>Symbol</label>
+        <input type="text" [(ngModel)]="searchSymbol" name="searchSymbol" required>
+    </p>
+    <p>
+        <button type="submit" [disabled]="!f.valid">Search</button>
+    </p>
+</form>
+
+
+<p>Stock Table:</p>
+<div *ngFor="let stock of stocks">
+    <p>
+        <span>Symbol: {{stock.symbol}}</span><br>
+        <span>Name: {{stock.name}}</span><br>
+        <span>Quantity: {{stock.qty}}</span><br>
+    </p>
+</div>
