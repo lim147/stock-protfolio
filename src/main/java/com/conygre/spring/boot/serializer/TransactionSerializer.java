@@ -20,7 +20,8 @@ public class TransactionSerializer extends StdSerializer<Transaction> {
     public void serialize(Transaction transaction, JsonGenerator jgen, SerializerProvider serializerProvider) throws IOException {
         jgen.writeStartObject();
         jgen.writeNumberField("id", transaction.getId());
-        jgen.writeStringField("stock_symbol", transaction.getStock().getSymbol());
+        jgen.writeStringField("stockSymbol", transaction.getStock().getSymbol());
+        jgen.writeStringField("name", transaction.getStock().getName());
         jgen.writeStringField("submittedDateTime", transaction.getSubmittedDateTime().toString());
         jgen.writeNumberField("submittedPrice", transaction.getSubmittedPrice());
         jgen.writeNumberField("qty", transaction.getQty());
