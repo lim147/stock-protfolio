@@ -3,7 +3,7 @@
 
 <button (click)="getAllStocks()">Show All</button>
 
-<form #f="ngForm" (ngSubmit)=" searchStocknBySymbol(f)">
+<form #f="ngForm" (ngSubmit)=" searchStockBySymbol(f)">
     <p>
         <label>Symbol</label>
         <input type="text" [(ngModel)]="searchSymbol" name="searchSymbol" required>

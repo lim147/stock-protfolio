@@ -26,8 +26,7 @@ export class MainpageComponent {
     });
   }
 
-  searchStocknBySymbol(form: NgForm){
-    console.log(this. searchSymbol);
+  searchStockBySymbol(form: NgForm){
     this.stocks = [];
     this.stockService.getStockBySymbol(this.searchSymbol).subscribe({
       next: (data:any) => this.stocks.push(data),
