@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
-import { Observable } from 'rxjs';
-import { Transaction } from '../transaction';
-import { TransactionService } from '../transaction.service';
+import { Stock } from '../stock';
+import { StockService } from '../stock.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-mainpage',
@@ -9,11 +9,40 @@ import { TransactionService } from '../transaction.service';
   styleUrls: ['./mainpage.component.css']
 })
 
-export class MainpageComponent{
-  transactions: Observable<Array<Transaction>>;
-  constructor(transactionService: TransactionService) { 
-    this.transactions = transactionService.getAllTransactions();
+export class MainpageComponent {
+  stocks! : Array<Stock>;
+  searchSymbol! : string;
+  searchName! : string;
 
+  constructor(private stockService : StockService) { }
+
+  ngOnInit(): void {
+    this.getAllStocks();
+  }
+
+  getAllStocks(){
+    this.stockService.getAllStocks().subscribe({
+      next: (data:any) => this.stocks = data,
+      error: (_:any)  => console.log("Error")
+    });
+  }
+
+  searchStockBySymbol(form: NgForm){
+    this.stocks = [];
+    this.stockService.getStockBySymbol(this.searchSymbol).subscribe({
+      next: (data:any) => this.stocks.push(data),
+      error: (_:any)  => console.log("Error")
+    });
+  }
+
+  searchStockByName(form: NgForm){
+    this.stocks = [];
+    this.stockService.getStockByName(this.searchName).subscribe({
+      next: (data:any) => this.stocks.push(data),
+      error: (_:any)  => console.log("Error")
+    });
   }
 
 }
+
+

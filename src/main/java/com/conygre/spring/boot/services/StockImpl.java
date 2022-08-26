@@ -26,13 +26,13 @@ public class StockImpl implements StockService {
     }
 
     @Override
-    public Collection<Stock> getStockBySymbol(String symbol) {
+    public Stock getStockBySymbol(String symbol) {
         logger.info("[INFO]: get all stocks by symbol");
         return dao.findBySymbol(symbol);
     }
 
     @Override
-    public Collection<Stock> getStocksByName(String name) {
+    public Stock getStockByName(String name) {
         logger.info("[INFO]: get all stocks by Name");
         return dao.findByName(name);
     }
@@ -44,15 +44,21 @@ public class StockImpl implements StockService {
     }
 
     @Override
-    public void sellStock(Stock stock) {
+    public void decreaseStockQty(Stock stock) {
         logger.info("[INFO]: sell stock");
-        dao.setStockQtyToZero(stock.getSymbol());
+        dao.decreaseStockQty(stock.getQty(), stock.getSymbol());
+    }
+
+    @Override
+    public void decreaseStockQtyToZero(Stock stock) {
+        logger.info("[INFO]: sell all stock");
+        dao.decreaseStockQtyToZero(stock.getSymbol());
     }
 
     @Override
     public void addStockQty(Stock stock) {
         logger.info("[INFO]: add stock qty");
-        dao.updateStockQty(stock.getQty(), stock.getSymbol());
+        dao.increaseStockQty(stock.getQty(), stock.getSymbol());
     }
 
 }

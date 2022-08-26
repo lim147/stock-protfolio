@@ -28,19 +28,19 @@ public class StockController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "stock-symbol/{symbol}")
-    public Collection<Stock> getStocksbySymbol(@PathVariable("symbol") String symbol) {
+    public Stock getStockbySymbol(@PathVariable("symbol") String symbol) {
         return stockService.getStockBySymbol(symbol);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "stock-name/{name}")
-    public Collection<Stock> getStocksbyName(@PathVariable("name") String name) {
-        return stockService.getStocksByName(name);
+    public Stock getStockbyName(@PathVariable("name") String name) {
+        return stockService.getStockByName(name);
     }
 
 
     @RequestMapping(method = RequestMethod.POST)
     public void buyStock(@RequestBody Stock stock) {
-        if (stockService.getStockBySymbol(stock.getSymbol()).isEmpty()) {
+        if (stockService.getStockBySymbol(stock.getSymbol()) == null) {
             stockService.buyStock(stock);
         } else {
             stockService.addStockQty(stock);
@@ -53,11 +53,22 @@ public class StockController {
 
     @RequestMapping(method = RequestMethod.DELETE)
     public void sellStock(@RequestBody Stock stock) {
-        stockService.sellStock(stock);
-        Transaction vo = transcVO(stock);
-        vo.setType("SELL");
-        transactionService.addTransaction(vo);
+        // Make sure the stock to be sold is within the stock portfolio
+        if (stockService.getStockBySymbol(stock.getSymbol()) != null){
+            int portfolioQty = stockService.getStockBySymbol(stock.getSymbol()).getQty();
+            // Make sure the quantity of stock being sold is smaller than the stock number in portfolio
+            if (portfolioQty >= stock.getQty()){
+                stockService.decreaseStockQty(stock);
+            }
+            // Otherwise, decrease the stock number in portfolio to 0
+            else{
+                stockService.decreaseStockQtyToZero(stock);
+            }
 
+            Transaction vo = transcVO(stock);
+            vo.setType("SELL");
+            transactionService.addTransaction(vo);
+        }
     }
 
     private Transaction transcVO(@RequestBody Stock stock) {
