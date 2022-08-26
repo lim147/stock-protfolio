@@ -24,45 +24,6 @@
     </p>
 </form>
 
-<!-- By a stock: -->
-<form #f="ngForm" (ngSubmit)="  buyStock(f)">
-    <p>
-        <label>Symbol</label>
-        <input type="text" [(ngModel)]="stockToBuySymbol" name="stockToBuySymbol" required>
-    </p>
-    <p>
-        <label>Name</label>
-        <input type="text" [(ngModel)]="stockToBuyName" name="stockToBuyName" required>
-    </p>
-    <p>
-        <label>Quantity</label>
-        <input type="number" [(ngModel)]="stockToBuyQty" name="stockToBuyQty" required>
-    </p>
-    <p>
-        <button type="submit">Buy stock</button>
-    </p>
-</form>
-
-<!-- By a stock: -->
-<form #f="ngForm" (ngSubmit)="  sellStock(f)">
-    <p>
-        <label>Symbol</label>
-        <input type="text" [(ngModel)]="stockToSellSymbol" name="stockToSellSymbol" required>
-    </p>
-    <p>
-        <label>Name</label>
-        <input type="text" [(ngModel)]="stockToSellName" name="stockToSellName" required>
-    </p>
-    <p>
-        <label>Quantity</label>
-        <input type="number" [(ngModel)]="stockToSellQty" name="stockToSellQty" required>
-    </p>
-    <p>
-        <button type="submit">Sell stock</button>
-    </p>
-</form>
-
-
 
 <p>Stock Table:</p>
 <div *ngFor="let stock of stocks">
