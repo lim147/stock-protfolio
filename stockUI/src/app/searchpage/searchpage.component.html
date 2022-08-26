@@ -1,88 +1,88 @@
 <button class="cta" (click)="getAllTransactions()">
-    <span class="hover-underline-animation"> Show All </span>
-    <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 46 16">
-      <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(30)"></path>
-    </svg>
-  </button>
-
+  <span class="hover-underline-animation" style="text-align: right"> Show All </span>
+  <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 46 16">
+    <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+          transform="translate(30)"></path>
+  </svg>
+</button>
 <form [formGroup]="searchFilterForm">
-    <label>Filter </label>
-    <select id="searchFilter" formControlName="searchFilter" (change)="setSearchFilterType()">
-        <option *ngFor="let filter of searchFilters" [ngValue]="filter">{{ filter }}</option>
-    </select>
+  <label>Filter </label>
+  <select id="searchFilter" formControlName="searchFilter" (change)="setSearchFilterType()">
+    <option *ngFor="let filter of searchFilters" [ngValue]="filter">{{ filter }}</option>
+  </select>
 </form>
 
 <!-- Search by id: -->
 <ng-container *ngIf="selectedValue == 'ID'">
-    <form #f="ngForm" (ngSubmit)="searchTransactionById(f)">
-        <p>
-            <label>Id </label>
-            <input type="number" [(ngModel)]="searchId" name="searchId" required>
-        </p>
-        <p>
-            <button type="submit" [disabled]="!f.valid">Search</button>
-        </p>
-    </form>
+  <form #f="ngForm" (ngSubmit)="searchTransactionById(f)">
+    <p>
+      <label>Id </label>
+      <input type="number" [(ngModel)]="searchId" name="searchId" required>
+    </p>
+    <p>
+      <button type="submit" [disabled]="!f.valid">Search</button>
+    </p>
+  </form>
 </ng-container>
 
 <!-- Search by symbol: -->
 <ng-container *ngIf="selectedValue == 'Symbol'">
-    <form #f="ngForm" (ngSubmit)="getTransactionsByStockSymbol(f)">
-        <p>
-            <label>Symbol </label>
-            <input type="string" [(ngModel)]="searchSymbol" name="searchSymbol" required>
-        </p>
-        <p>
-            <button type="submit" [disabled]="!f.valid">Search</button>
-        </p>
-    </form>
+  <form #f="ngForm" (ngSubmit)="getTransactionsByStockSymbol(f)">
+    <p>
+      <label>Symbol </label>
+      <input type="string" [(ngModel)]="searchSymbol" name="searchSymbol" required>
+    </p>
+    <p>
+      <button type="submit" [disabled]="!f.valid">Search</button>
+    </p>
+  </form>
 </ng-container>
 
 <!-- Search by date range: -->
 <ng-container *ngIf="selectedValue == 'Date Range'">
-    <form #f="ngForm" (ngSubmit)="getTransactionsBetweenDate(f)">
-        <p>
-            <label>Type </label>
-            <input type="Date" [(ngModel)]="startDate" name="startDate" required>
-            <input type="Date" [(ngModel)]="endDate" name="endDate" required>
-        </p>
-        <p>
-            <button type="submit" [disabled]="!f.valid">Search</button>
-        </p>
-    </form>
+  <form #f="ngForm" (ngSubmit)="getTransactionsBetweenDate(f)">
+    <p>
+      <label>Type </label>
+      <input type="Date" [(ngModel)]="startDate" name="startDate" required>
+      <input type="Date" [(ngModel)]="endDate" name="endDate" required>
+    </p>
+    <p>
+      <button type="submit" [disabled]="!f.valid">Search</button>
+    </p>
+  </form>
 </ng-container>
 
 <!-- Search by price range: -->
 <ng-container *ngIf="selectedValue == 'Price Range'">
-    <form #f="ngForm" (ngSubmit)="getTransactionsBetweenPrice(f)">
-        <p>
-            <label>Type </label>
-            <input type="number" [(ngModel)]="startPrice" name="startPrice" required>
-            <input type="number" [(ngModel)]="endPrice" name="endPrice" required>
-        </p>
-        <p>
-            <button type="submit" [disabled]="!f.valid">Search</button>
-        </p>
-    </form>
+  <form #f="ngForm" (ngSubmit)="getTransactionsBetweenPrice(f)">
+    <p>
+      <label>Type </label>
+      <input type="number" [(ngModel)]="startPrice" name="startPrice" required>
+      <input type="number" [(ngModel)]="endPrice" name="endPrice" required>
+    </p>
+    <p>
+      <button type="submit" [disabled]="!f.valid">Search</button>
+    </p>
+  </form>
 </ng-container>
 
 <!-- Search by transaction: -->
 <ng-container *ngIf="selectedValue == 'Transaction Type'">
-    <form #f="ngForm" (ngSubmit)="getTransactionsByType(f)">
-        <p>
-            <label>Type </label>
-            <input type="string" [(ngModel)]="searchType" name="searchType" required>
-        </p>
-        <p>
-            <button type="submit" [disabled]="!f.valid">Search</button>
-        </p>
-    </form>
+  <form #f="ngForm" (ngSubmit)="getTransactionsByType(f)">
+    <p>
+      <label>Type </label>
+      <input type="string" [(ngModel)]="searchType" name="searchType" required>
+    </p>
+    <p>
+      <button type="submit" [disabled]="!f.valid">Search</button>
+    </p>
+  </form>
 </ng-container>
 
 <!-- <pre> {{transactions |json}} </pre> -->
-<p>Transaction Table:</p>
-<div *ngFor="let transaction of transactions">
-    <p>
+<p style="color: rgba(255,255,255,0.6);font-family: Arial;" align="left">TRANSACTION TABLE: </p>
+    <div *ngFor="let transaction of transactions">
+      <p>
         <span>Id: {{transaction.id}}</span><br>
         <span>Symbol: {{transaction.stockSymbol}}</span><br>
         <span>Name: {{transaction.name}}</span><br>
@@ -90,5 +90,5 @@
         <span>Submitted Price: {{transaction.submittedPrice}}</span><br>
         <span>Quantity: {{transaction.qty}}</span><br>
         <span>Type: {{transaction.type}}</span>
-    </p>
-</div>
+      </p>
+    </div>
