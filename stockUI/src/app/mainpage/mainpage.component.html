@@ -9,65 +9,38 @@
   </svg>
 </button>
 
-<div class="container" >
+<form [formGroup]="searchFilterForm">
+    <label>Filter </label>
+    <select id="searchFilter" formControlName="searchFilter" (change)="setSearchFilterType()">
+        <option *ngFor="let filter of searchFilters" [ngValue]="filter">{{ filter }}</option>
+    </select>
+</form>
 
-  <nav>
-    <ul>
-      <li>
-        <!-- Search by symbol: -->
-        <form #f="ngForm" (ngSubmit)=" searchStockBySymbol(f)">
-          <p>
-<!--            <label>Symbol</label>-->
-            <input type="text" [(ngModel)]="searchSymbol" placeholder="Symbol" name="searchSymbol" required >
-          </p>
-          <p>
-            <button  type="submit" [disabled]="!f.valid"><span class="yesyes"> Search By Symbol </span>
-              </button>
-          </p>
-        </form>
-      </li>
+<!-- Search by symbol: -->
+<ng-container *ngIf="selectedValue == 'Symbol'">
+    <form #f="ngForm" (ngSubmit)=" searchStockBySymbol(f)">
+        <p>
+            <label>Symbol</label>
+            <input type="text" [(ngModel)]="searchSymbol" name="searchSymbol" required>
+        </p>
+        <p>
+            <button type="submit" [disabled]="!f.valid">Search By Symbol</button>
+        </p>
+    </form>
+</ng-container>
 
-      <li>
-        <!-- Search by name: -->
-        <form #f="ngForm" (ngSubmit)=" searchStockByName(f)">
-          <p>
-<!--            <label>Name</label>-->
-            <input type="text" [(ngModel)]="searchName" placeholder="Name" name="searchName" required>
-          </p>
-          <p>
-            <button class = "ccn" type="submit" [disabled]="!f.valid"><span class="yesyes"> Search By Symbol </span>
-            </button>
-          </p>
-        </form>
-      </li>
-
-    </ul>
-  </nav>
-  <router-outlet></router-outlet>
-</div>
-
-
-<!--&lt;!&ndash; Search by symbol: &ndash;&gt;-->
-<!--<form #f="ngForm" (ngSubmit)=" searchStockBySymbol(f)">-->
-<!--    <p>-->
-<!--        <label>Symbol</label>-->
-<!--        <input type="text" [(ngModel)]="searchSymbol" name="searchSymbol" required>-->
-<!--    </p>-->
-<!--    <p>-->
-<!--        <button type="submit" [disabled]="!f.valid">Search By Symbol</button>-->
-<!--    </p>-->
-<!--</form>-->
-
-<!--&lt;!&ndash; Search by name: &ndash;&gt;-->
-<!--<form #f="ngForm" (ngSubmit)=" searchStockByName(f)">-->
-<!--    <p>-->
-<!--        <label>Name</label>-->
-<!--        <input type="text" [(ngModel)]="searchName" name="searchName" required>-->
-<!--    </p>-->
-<!--    <p>-->
-<!--        <button type="submit" [disabled]="!f.valid">Search By Name</button>-->
-<!--    </p>-->
-<!--</form>-->
+<!-- Search by name: -->
+<ng-container *ngIf="selectedValue == 'Name'">
+    <form #f="ngForm" (ngSubmit)=" searchStockByName(f)">
+        <p>
+            <label>Name</label>
+            <input type="text" [(ngModel)]="searchName" name="searchName" required>
+        </p>
+        <p>
+            <button type="submit" [disabled]="!f.valid">Search By Name</button>
+        </p>
+    </form>
+</ng-container>
 
 
 <p>Stock Table:</p>
@@ -78,5 +51,3 @@
         <span>Quantity: {{stock.qty}}</span><br>
     </p>
 </div>
-
-</html>

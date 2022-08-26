@@ -11,35 +11,43 @@ import { NgForm } from '@angular/forms';
 export class TradingpageComponent {
   stocks! : Array<Stock>;
 
-  stockToBuyName! : string;
-  stockToBuyQty! : number;
-  stockToBuySymbol! : string;
-  buyMessageDisplay : boolean = false;
+  stockName! : string;
+  stockQty! : number;
+  stockSymbol! : string;
 
-  stockToSellName! : string;
-  stockToSellQty! : number;
-  stockToSellSymbol! : string;
-  sellMessageDisplay : boolean = false;
+  tradingType! : string;
+  messageDisplay : boolean = false;
 
   constructor(private stockService : StockService) { }
 
   ngOnInit(): void {
   }
 
+  tradeStock(type : String, form: NgForm){
+    if (type == 'buy'){
+      this.buyStock(form);
+      this.tradingType = 'buy';
+    }
+    if (type == 'sell'){
+      this.sellStock(form);
+      this.tradingType = 'sell';
+    }
+  }
+
   buyStock(form: NgForm){
-    this.stockService.buyStock(this.stockToBuySymbol, this.stockToBuyName, this.stockToBuyQty).subscribe({
+    this.stockService.buyStock(this.stockSymbol, this.stockName, this.stockQty).subscribe({
       next: (data:any) => this.stocks.push(data),
       error: (_:any)  => console.log("Error")
     });
-    this.buyMessageDisplay = true;
+    this.messageDisplay = true;
   }
 
   sellStock(form: NgForm){
-    this.stockService.sellStock(this.stockToSellSymbol, this.stockToSellName, this.stockToSellQty).subscribe({
+    this.stockService.sellStock(this.stockSymbol, this.stockName, this.stockQty).subscribe({
       next: (data:any) => this.stocks.push(data),
       error: (_:any)  => console.log("Error")
     });
-    this.sellMessageDisplay = true;
+    this.messageDisplay = true;
   }
 
 

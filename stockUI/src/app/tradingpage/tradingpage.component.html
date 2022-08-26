@@ -1,49 +1,32 @@
 <h1>Trading page</h1>
 
 <!-- Buy a stock: -->
-<form #f="ngForm" (ngSubmit)="  buyStock(f)">
-    <p>
-        <label>Symbol</label>
-        <input type="text" [(ngModel)]="stockToBuySymbol" name="stockToBuySymbol" required>
-    </p>
-    <p>
-        <label>Name</label>
-        <input type="text" [(ngModel)]="stockToBuyName" name="stockToBuyName" required>
-    </p>
-    <p>
-        <label>Quantity</label>
-        <input type="number" [(ngModel)]="stockToBuyQty" name="stockToBuyQty" required>
-    </p>
-    <p>
-        <button type="submit">Buy stock</button>
-    </p>
-    <ng-container *ngIf="buyMessageDisplay">
-        <p>Buy stock success.</p>
-    </ng-container>
-</form>
 
-
-
-<!-- Sell a stock: -->
-<form #f="ngForm" (ngSubmit)="  sellStock(f)">
-    <p>
-        <label>Symbol</label>
-        <input type="text" [(ngModel)]="stockToSellSymbol" name="stockToSellSymbol" required>
-    </p>
-    <p>
-        <label>Name</label>
-        <input type="text" [(ngModel)]="stockToSellName" name="stockToSellName" required>
-    </p>
-    <p>
-        <label>Quantity</label>
-        <input type="number" [(ngModel)]="stockToSellQty" name="stockToSellQty" required>
-    </p>
-    <p>
-        <button type="submit">Sell stock</button>
-    </p>
-    <ng-container *ngIf="sellMessageDisplay">
-        <p>Sell stock success.</p>
-    </ng-container>
-</form>
-
-
+<div>
+    <form #f="ngForm" id="tradingform" (ngSubmit)="tradeStock($event.submitter.id, f)">
+        <p>
+            <label>Symbol</label>
+            <input type="text" placeholder="Enter Symbol" [(ngModel)]="stockSymbol" name="stockSymbol" required>
+        </p>
+        <p>
+            <label>Name</label>
+            <input type="text" placeholder="Enter Name" [(ngModel)]="stockName" name="stockName" required>
+        </p>
+        <!-- <p>
+            <label>Price</label>
+            <input type="number" placeholder="Enter Price" [(ngModel)]="stockPrice" name="stockPrice" required>
+        </p> -->
+        <p>
+            <label>Quantity</label>
+            <input type="number" placeholder="Enter Quantity" [(ngModel)]="stockQty" name="stockQty" required>
+        </p>
+        <div class=""cntr>
+            <button id="buy" type="submit" [disabled]="!f.valid">Buy</button>
+            <button id="sell" type="submit" [disabled]="!f.valid">Sell</button>
+        </div>
+        
+        <ng-container *ngIf="messageDisplay">
+            <p>{{tradingType}} stock success.</p>
+        </ng-container>
+    </form>
+</div>
