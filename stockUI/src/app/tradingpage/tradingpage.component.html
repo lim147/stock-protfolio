@@ -47,3 +47,44 @@
 </form>
 
 
+<!-- <p>tradingpage works!</p> -->
+
+<!-- (ngSubmit)="add(f)" -->
+<form #f="ngForm" id="tradingform" >
+    <!-- <p>
+        <label>Product</label>
+        <select [(ngModel)]="selectedProduct" name="product">
+            <option *ngFor="let product of products" [ngValue]="product"></option>
+        </select>
+    </p> -->
+    <p>
+        <label for="stockname"><b>Stock</b></label>
+        <input type="text" placeholder="Enter Stock Name" name="stockname" required>
+    </p>
+
+    <p>
+        <label for="stocksymbol"><b>Symbol</b></label>
+        <input type="text" placeholder="Enter Stock Symbol" name="stocksymbol" required>
+    </p>
+
+    <p>
+        <label for="quantity"><b>Price</b></label>
+        <input type="number" placeholder="Enter Price" name="quantity" required>
+    </p>
+
+    <p>
+        <label for="quantity"><b>Quantity</b></label>
+        <input type="number" placeholder="# of Units" name="quantity" required>
+    </p>
+
+    <!-- <p>
+        <label>Quantity</label>
+        <input type="number" [(ngModel)]="quantity" name="quantity" required>
+    </p> -->
+
+    <div class=""cntr>
+        <button id="buybtn" type="submit" [disabled]="!f.valid">Buy</button>
+    
+        <button id="sellbtn" type="submit" [disabled]="!f.valid">Sell</button>
+    </div>
+</form>
