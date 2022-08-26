@@ -1,5 +1,5 @@
 div{ 
-    zoom: 2; 
+    zoom: 1.75; 
 }
 
 
@@ -26,14 +26,14 @@ label {
 }
 
 input[type=text] {
-    width: 170 px;
+    width: 200px;
     padding:10px;
     border:0;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
 input[type=number] {
-    width: 170px;
+    width: 200px;
     padding:10px;
     border:0;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
