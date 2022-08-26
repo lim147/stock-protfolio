@@ -6,19 +6,19 @@
     <form #f="ngForm" id="tradingform" (ngSubmit)="tradeStock($event.submitter.id, f)">
         <p>
             <label>Symbol</label>
-            <input type="text" [(ngModel)]="stockSymbol" name="stockSymbol" required>
+            <input type="text" placeholder="Enter Symbol" [(ngModel)]="stockSymbol" name="stockSymbol" required>
         </p>
         <p>
             <label>Name</label>
-            <input type="text" [(ngModel)]="stockName" name="stockName" required>
+            <input type="text" placeholder="Enter Name" [(ngModel)]="stockName" name="stockName" required>
         </p>
         <!-- <p>
             <label>Price</label>
-            <input type="number" [(ngModel)]="stockPrice" name="stockPrice" required>
+            <input type="number" placeholder="Enter Price" [(ngModel)]="stockPrice" name="stockPrice" required>
         </p> -->
         <p>
             <label>Quantity</label>
-            <input type="number" [(ngModel)]="stockQty" name="stockQty" required>
+            <input type="number" placeholder="Enter Quantity" [(ngModel)]="stockQty" name="stockQty" required>
         </p>
         <div class=""cntr>
             <button id="buy" type="submit" [disabled]="!f.valid">Buy</button>
