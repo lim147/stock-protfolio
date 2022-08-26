@@ -1,15 +1,15 @@
 body {
     font-family: 'Rubik Mono One', sans-serif;
+    background-color: #597ea6;
     /*font-family: Verdana, Geneva, sans-serif;*/
-    padding: 7px;
 }
 
 
 nav {
-    text-align: center;
     background-color: #597ea6;
     padding: 12px 3px;
     margin-bottom: 1px;
+    align-content: center;
 }
 
 nav a {

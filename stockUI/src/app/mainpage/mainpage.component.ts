@@ -16,6 +16,8 @@ export class MainpageComponent {
   stocks! : Array<Stock>;
   searchSymbol! : string;
   searchName! : string;
+  stocksSize!: number;
+  showContainer: Boolean = true;
 
   constructor(private stockService : StockService) {
     this.searchFilterForm = new FormGroup({
@@ -33,7 +35,11 @@ export class MainpageComponent {
 
   getAllStocks(){
     this.stockService.getAllStocks().subscribe({
-      next: (data:any) => this.stocks = data,
+      next: (data:any) => {
+        if (data != undefined) this.stocks = data;
+        this.stocksSize = (this.stocks == null) ? 0 : this.stocks.length;
+        this.showContainer = (this.stocksSize > 0);
+      },
       error: (_:any)  => console.log("Error")
     });
   }
@@ -41,7 +47,11 @@ export class MainpageComponent {
   searchStockBySymbol(form: NgForm){
     this.stocks = [];
     this.stockService.getStockBySymbol(this.searchSymbol).subscribe({
-      next: (data:any) => this.stocks.push(data),
+      next: (data:any) => {
+        if (data != undefined) this.stocks.push(data);
+        this.stocksSize = (this.stocks == null) ? 0 : this.stocks.length;
+        this.showContainer = (this.stocksSize > 0);
+      },
       error: (_:any)  => console.log("Error")
     });
   }
@@ -49,11 +59,14 @@ export class MainpageComponent {
   searchStockByName(form: NgForm){
     this.stocks = [];
     this.stockService.getStockByName(this.searchName).subscribe({
-      next: (data:any) => this.stocks.push(data),
+      next: (data:any) => {
+        if (data != undefined) this.stocks.push(data);
+        this.stocksSize = (this.stocks == null) ? 0 : this.stocks.length;
+        this.showContainer = (this.stocksSize > 0);
+      },
       error: (_:any)  => console.log("Error")
     });
   }
-
 }
 
 

@@ -6,7 +6,9 @@ html {
 }
 
 body {
-  background-color: transparent;
+  background-color: #597ea6;
+  margin: auto;
+  text-align: center;
   font-family: 'Rubik Mono One', sans-serif;
 }
 
@@ -107,13 +109,14 @@ a span:nth-child(4){
 
 ul {
   display: flex;
+  align-content: center;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 li {
-  flex: 1;
+  flex-grow: 1;
   border-radius: 50px;
   list-style: none; display: inline-block;
 }

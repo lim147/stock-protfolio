@@ -1,15 +1,17 @@
 <button class="cta" (click)="getAllStocks()">
-  <span class="hover-underline-animation"> Show All </span>
+  <span class="hover-underline-animation" style="align: left"> Show All </span>
   <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 46 16">
-    <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z" transform="translate(30)"></path>
+    <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+          transform="translate(30)"></path>
   </svg>
 </button>
 
+
 <form [formGroup]="searchFilterForm">
-    <label>Filter </label>
-    <select id="searchFilter" formControlName="searchFilter" (change)="setSearchFilterType()">
-        <option *ngFor="let filter of searchFilters" [ngValue]="filter">{{ filter }}</option>
-    </select>
+  <label>Filter: </label>
+  <select id="searchFilter" formControlName="searchFilter" (change)="setSearchFilterType()">
+    <option *ngFor="let filter of searchFilters" [ngValue]="filter">{{ filter }}</option>
+  </select>
 </form>
 
 <!-- Search by symbol: -->
@@ -39,11 +41,49 @@
 </ng-container>
 
 
-<p>Stock Table:</p>
-<div *ngFor="let stock of stocks">
-    <p>
-        <span>Symbol: {{stock.symbol}}</span><br>
-        <span>Name: {{stock.name}}</span><br>
-        <span>Quantity: {{stock.qty}}</span><br>
-    </p>
-</div>
+<!--<p style="color: rgba(255,255,255,0.6);font-family: Arial;" align="left">STOCK TABLE: </p>-->
+<!--<div id="container" class='pricing' *ngFor="let stock of stocks, let i = >-->
+<!--  <div> *ngIf = "i%3" == 0 class=""row-->
+<!--    <div class="[ price-option price-option&#45;&#45;low ]">-->
+<!--      <div class="price-option__detail">-->
+<!--        <span class="price-option__cost">{{stock.symbol}}<br></span>-->
+<!--        <span class="price-option__type">{{stock.name}}</span>-->
+<!--      </div>-->
+<!--      <span class="price-option__purchase">Quantity: {{stock.qty}}</span>-->
+<!--    </div>-->
+<!--    <div class="[ price-option price-option&#45;&#45;low ]" *ngIf="i + 1 < stocks.length">-->
+<!--      <div class="price-option__detail">-->
+<!--        <span class="price-option__cost">{{stock[i+1].symbol}}<br></span>-->
+<!--        <span class="price-option__type">{{stock[i+1].name}}</span>-->
+<!--      </div>-->
+<!--      <span class="price-option__purchase">Quantity: {{stock[i+1].qty}}</span>-->
+<!--    </div>-->
+<!--    <div class="[ price-option price-option&#45;&#45;low ]" *ngIf="i + 2 < stocks.length">-->
+<!--      <div class="price-option__detail">-->
+<!--        <span class="price-option__cost">{{stock[i+2].symbol}}<br></span>-->
+<!--        <span class="price-option__type">{{stock[i+2].name}}</span>-->
+<!--      </div>-->
+<!--      <span class="price-option__purchase">Quantity: {{stock[i+2].qty}}</span>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>>-->
+
+
+  <p style="color:rgba(255,255,255,0.6); font-family:Arial; text-align:center; padding-top:20px;">STOCK TABLE: </p>
+  <ng-container *ngIf="showContainer">
+    <div id="container" class='pricing' *ngFor="let stock of stocks">
+      <nav>
+        <ul>
+          <li>
+            <div class="[ price-option price-option--low ]">
+              <div class="price-option__detail">
+                <span class="price-option__cost">{{stock.symbol}}<br></span>
+                <span class="price-option__type">{{stock.name}}</span>
+              </div>
+              <span class="price-option__purchase">Quantity: {{stock.qty}}</span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </ng-container>
