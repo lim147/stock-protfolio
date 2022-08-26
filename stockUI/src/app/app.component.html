@@ -1,8 +1,61 @@
-<h1 id="mainheader">My Stocks Portfolio</h1>
-<nav id="options">
-  <a routerLink="/">Main Page</a>
-  <a routerLink="/search">Search</a>
-  <a routerLink="/trading">Trading</a>
-</nav>
+<!--<h1>My Stocks Portfolio</h1>-->
+<!--<nav>-->
+<!--  <a routerLink="/">Main Page</a>-->
+<!--  <a routerLink="/search">Search</a>-->
+<!--  <a routerLink="/trading">Trading</a>-->
+<!--</nav>-->
 
-<router-outlet></router-outlet>
+<!--<router-outlet></router-outlet>-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>porfolio page</title>
+  <style>
+    body {
+      background-color: #597ea6;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+<h1><a href="#" class="btn" >
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>My Portfolio</a></h1>
+
+<div class="container" >
+
+  <nav>
+    <ul>
+      <li>
+        <button class="button">
+          <span class="actual-text">&nbsp;Stock&nbsp;Portfolio&nbsp;</span>
+          <span class="hover-text" aria-hidden="true"><a routerLink="/">Stock&nbsp;Portfolio</a></span>
+        </button>
+      </li>
+
+      <li>
+        <button class="button">
+          <span class="actual-text">&nbsp;Transactions&nbsp;</span>
+          <span class="hover-text" aria-hidden="true"><a routerLink="/search">Transactions</a></span>
+        </button>
+      </li>
+
+      <li>
+        <button class="button">
+          <span class="actual-text">&nbsp;Trading&nbsp;</span>
+          <span class="hover-text" aria-hidden="true"><a routerLink="/trading">Trading</a></span>
+        </button>
+      </li>
+
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
+
+
+</body>
+</html>

@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="PortfolioManager" />
         <module name="shehroozevelt-stock-portfolio-ad3e6e1f39e3" />
-        <module name="stock-portfolio" />
       </profile>
     </annotationProcessing>
   </component>
