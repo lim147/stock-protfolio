@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
-/*html {*/
-/*  font-size: 20px;*/
-/*  box-sizing: border-box;*/
-/*}*/
+html {
+  font-size: 20px;
+  box-sizing: border-box;
+}
 
 body {
   background-color: transparent;
@@ -104,6 +104,7 @@ a span:nth-child(4){
 }
 /*----------------------------------------------------------------------------------------------------------------------*/
 
+
 ul {
   display: flex;
   list-style: none;
@@ -114,6 +115,7 @@ ul {
 li {
   flex: 1;
   border-radius: 50px;
+  list-style: none; display: inline-block;
 }
 
 .button {
@@ -128,7 +130,7 @@ li {
   --border-right: 6px;
   --text-stroke-color: rgba(255,255,255,0.6);
   --animation-color: #37FF8B;
-  --fs-size: 2em;
+  --fs-size: 1.6em;
   letter-spacing: 3px;
   text-decoration: none;
   font-size: var(--fs-size);

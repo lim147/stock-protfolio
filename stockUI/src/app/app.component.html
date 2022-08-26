@@ -5,14 +5,6 @@
 <!--  <a routerLink="/trading">Trading</a>-->
 <!--</nav>-->
 
-<!--<nav>-->
-<!--  <ul>-->
-<!--    <li class="active"><a routerLink="/">Main Page</a></li>-->
-<!--    <li><a routerLink="/search">Search</a></li>-->
-<!--    <li><a routerLink="/trading">Trading</a></li>-->
-<!--  </ul>-->
-<!--</nav>-->
-
 <!--<router-outlet></router-outlet>-->
 <!DOCTYPE html>
 <html>
@@ -23,40 +15,39 @@
     body {
       background-color: #597ea6;
       margin: auto;
-      text-align: center;
     }
   </style>
 </head>
 
 <body>
-<h1><a href="#" class="btn">
+<h1><a href="#" class="btn" >
   <span></span>
   <span></span>
   <span></span>
   <span></span>My Portfolio</a></h1>
 
-<div class="container">
+<div class="container" >
 
   <nav>
     <ul>
       <li>
         <button class="button">
-          <span class="actual-text">&nbsp;Main&nbsp;Page&nbsp;</span>
-          <span class="hover-text" aria-hidden="true"><a routerLink="/">&nbsp;Main&nbsp;Page</a></span>
+          <span class="actual-text">&nbsp;Stock&nbsp;Portfolio&nbsp;</span>
+          <span class="hover-text" aria-hidden="true"><a routerLink="/">Stock&nbsp;Portfolio</a></span>
         </button>
       </li>
 
       <li>
         <button class="button">
-          <span class="actual-text">&nbsp;Search&nbsp;</span>
-          <span class="hover-text" aria-hidden="true"><a routerLink="/">&nbsp;Search&nbsp;</a></span>
+          <span class="actual-text">&nbsp;Transactions&nbsp;</span>
+          <span class="hover-text" aria-hidden="true"><a routerLink="/search">Transactions</a></span>
         </button>
       </li>
 
       <li>
         <button class="button">
-          <span class="actual-text">&nbsp;Trending&nbsp;</span>
-          <span class="hover-text" aria-hidden="true"><a routerLink="/">&nbsp;Trending&nbsp;</a></span>
+          <span class="actual-text">&nbsp;Trading&nbsp;</span>
+          <span class="hover-text" aria-hidden="true"><a routerLink="/trading">Trading</a></span>
         </button>
       </li>
 
@@ -68,12 +59,3 @@
 
 </body>
 </html>
-
-
-<!--  <nav>-->
-<!--    <ul>-->
-<!--      <li><a href="#home" class="active"><a routerLink="/">&nbsp;Main&nbsp;Page&nbsp;</a></a></li>-->
-<!--      <li><a href="#about"><a routerLink="/search">Search</a></a></li>-->
-<!--      <li><a href="#services"><a routerLink="/trading">Trading</a></a></li>-->
-<!--    </ul>-->
-<!--  </nav>-->
