@@ -9,6 +9,7 @@
     </select>
 </form>
 
+<!-- Search by id: -->
 <ng-container *ngIf="selectedValue == 'ID'">
     <form #f="ngForm" (ngSubmit)="searchTransactionById(f)">
         <p>
@@ -21,6 +22,7 @@
     </form>
 </ng-container>
 
+<!-- Search by symbol: -->
 <ng-container *ngIf="selectedValue == 'Symbol'">
     <form #f="ngForm" (ngSubmit)="getTransactionsByStockSymbol(f)">
         <p>
@@ -33,6 +35,7 @@
     </form>
 </ng-container>
 
+<!-- Search by date range: -->
 <ng-container *ngIf="selectedValue == 'Date Range'">
     <form #f="ngForm" (ngSubmit)="getTransactionsBetweenDate(f)">
         <p>
@@ -46,6 +49,7 @@
     </form>
 </ng-container>
 
+<!-- Search by price range: -->
 <ng-container *ngIf="selectedValue == 'Price Range'">
     <form #f="ngForm" (ngSubmit)="getTransactionsBetweenPrice(f)">
         <p>
@@ -59,6 +63,7 @@
     </form>
 </ng-container>
 
+<!-- Search by transaction: -->
 <ng-container *ngIf="selectedValue == 'Transaction Type'">
     <form #f="ngForm" (ngSubmit)="getTransactionsByType(f)">
         <p>
