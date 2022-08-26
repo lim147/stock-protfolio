@@ -16,7 +16,7 @@
 <ng-container *ngIf="selectedValue == 'Symbol'">
     <form #f="ngForm" (ngSubmit)=" searchStockBySymbol(f)">
         <p>
-            <label>Symbol</label>
+            <label>Symbol </label>
             <input type="text" [(ngModel)]="searchSymbol" name="searchSymbol" required>
         </p>
         <p>
@@ -29,7 +29,7 @@
 <ng-container *ngIf="selectedValue == 'Name'">
     <form #f="ngForm" (ngSubmit)=" searchStockByName(f)">
         <p>
-            <label>Name</label>
+            <label>Name </label>
             <input type="text" [(ngModel)]="searchName" name="searchName" required>
         </p>
         <p>
