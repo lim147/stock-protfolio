@@ -14,14 +14,6 @@ export class MainpageComponent {
   searchSymbol! : string;
   searchName! : string;
 
-  stockToBuyName! : string;
-  stockToBuyQty! : number;
-  stockToBuySymbol! : string;
-
-  stockToSellName! : string;
-  stockToSellQty! : number;
-  stockToSellSymbol! : string;
-
   constructor(private stockService : StockService) { }
 
   ngOnInit(): void {
@@ -50,21 +42,6 @@ export class MainpageComponent {
       error: (_:any)  => console.log("Error")
     });
   }
-
-  buyStock(form: NgForm){
-    this.stockService.buyStock(this.stockToBuySymbol, this.stockToBuyName, this.stockToBuyQty).subscribe({
-      next: (data:any) => this.stocks.push(data),
-      error: (_:any)  => console.log("Error")
-    });
-  }
-
-  sellStock(form: NgForm){
-    this.stockService.sellStock(this.stockToSellSymbol, this.stockToSellName, this.stockToSellQty).subscribe({
-      next: (data:any) => this.stocks.push(data),
-      error: (_:any)  => console.log("Error")
-    });
-  }
-
 
 }
 
