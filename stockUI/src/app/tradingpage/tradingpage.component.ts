@@ -10,14 +10,16 @@ import { NgForm } from '@angular/forms';
 })
 export class TradingpageComponent {
   stocks! : Array<Stock>;
-  
+
   stockToBuyName! : string;
   stockToBuyQty! : number;
   stockToBuySymbol! : string;
+  buyMessageDisplay : boolean = false;
 
   stockToSellName! : string;
   stockToSellQty! : number;
   stockToSellSymbol! : string;
+  sellMessageDisplay : boolean = false;
 
   constructor(private stockService : StockService) { }
 
@@ -29,6 +31,7 @@ export class TradingpageComponent {
       next: (data:any) => this.stocks.push(data),
       error: (_:any)  => console.log("Error")
     });
+    this.buyMessageDisplay = true;
   }
 
   sellStock(form: NgForm){
@@ -36,6 +39,7 @@ export class TradingpageComponent {
       next: (data:any) => this.stocks.push(data),
       error: (_:any)  => console.log("Error")
     });
+    this.sellMessageDisplay = true;
   }
 
 

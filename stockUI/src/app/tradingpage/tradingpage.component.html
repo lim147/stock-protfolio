@@ -1,11 +1,5 @@
 <h1>Trading page</h1>
 
-<script>
-    function displayBuyMsg() {
-      document.getElementById("buyMsg").style.color = "red";
-    }
-</script>
-
 <!-- Buy a stock: -->
 <form #f="ngForm" (ngSubmit)="  buyStock(f)">
     <p>
@@ -21,10 +15,14 @@
         <input type="number" [(ngModel)]="stockToBuyQty" name="stockToBuyQty" required>
     </p>
     <p>
-        <button type="submit" onclick="displayBuyMsg()">Buy stock</button>
+        <button type="submit">Buy stock</button>
     </p>
-    <p id="buyMsg">You just buy stock.</p>
+    <ng-container *ngIf="buyMessageDisplay">
+        <p>Buy stock success.</p>
+    </ng-container>
 </form>
+
+
 
 <!-- Sell a stock: -->
 <form #f="ngForm" (ngSubmit)="  sellStock(f)">
@@ -43,7 +41,9 @@
     <p>
         <button type="submit">Sell stock</button>
     </p>
-    <p id="sellMsg">You just sell stock.</p>
+    <ng-container *ngIf="sellMessageDisplay">
+        <p>Sell stock success.</p>
+    </ng-container>
 </form>
 
 
