@@ -1,11 +1,13 @@
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 0px;
+    font-family: 'Rubik Mono One', sans-serif;
+    /*font-family: Verdana, Geneva, sans-serif;*/
+    padding: 20px;
 }
 
+
 nav {
-    background-color: #1199ff;
-    padding: 12px 5px;
+    background-color: #597ea6;
+    padding: 12px 3px;
     margin-bottom: 1px;
 }
 
@@ -15,8 +17,8 @@ nav a {
     padding: 5px;
 }
 
-nav a:hover {
-    color: #1199ff;
-    background-color: white;
-    text-decoration: none;
-}
+/*nav a:hover {*/
+/*    color: blue;*/
+/*    background-color: white;*/
+/*    text-decoration: none;*/
+/*}*/
