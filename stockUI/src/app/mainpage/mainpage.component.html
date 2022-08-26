@@ -10,8 +10,8 @@
 </button>
 
 <form [formGroup]="searchFilterForm">
-    <label> Filter </label>
-    <select required id="searchFilter" formControlName="searchFilter" (change)="setSearchFilterType()">
+    <label>Filter </label>
+    <select id="searchFilter" formControlName="searchFilter" (change)="setSearchFilterType()">
         <option *ngFor="let filter of searchFilters" [ngValue]="filter">{{ filter }}</option>
     </select>
 </form>
