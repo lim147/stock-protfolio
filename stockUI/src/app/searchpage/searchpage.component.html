@@ -12,7 +12,7 @@
 <ng-container *ngIf="selectedValue == 'ID'">
     <form #f="ngForm" (ngSubmit)="searchTransactionById(f)">
         <p>
-            <label>Id</label>
+            <label>Id </label>
             <input type="number" [(ngModel)]="searchId" name="searchId" required>
         </p>
         <p>
@@ -21,9 +21,57 @@
     </form>
 </ng-container>
 
+<ng-container *ngIf="selectedValue == 'Symbol'">
+    <form #f="ngForm" (ngSubmit)="getTransactionsByStockSymbol(f)">
+        <p>
+            <label>Symbol </label>
+            <input type="string" [(ngModel)]="searchSymbol" name="searchSymbol" required>
+        </p>
+        <p>
+            <button type="submit" [disabled]="!f.valid">Search</button>
+        </p>
+    </form>
+</ng-container>
 
+<ng-container *ngIf="selectedValue == 'Date Range'">
+    <form #f="ngForm" (ngSubmit)="getTransactionsBetweenDate(f)">
+        <p>
+            <label>Type </label>
+            <input type="Date" [(ngModel)]="startDate" name="startDate" required>
+            <input type="Date" [(ngModel)]="endDate" name="endDate" required>
+        </p>
+        <p>
+            <button type="submit" [disabled]="!f.valid">Search</button>
+        </p>
+    </form>
+</ng-container>
 
-<!-- <pre> {{transaction |json}} </pre> -->
+<ng-container *ngIf="selectedValue == 'Price Range'">
+    <form #f="ngForm" (ngSubmit)="getTransactionsBetweenPrice(f)">
+        <p>
+            <label>Type </label>
+            <input type="number" [(ngModel)]="startPrice" name="startPrice" required>
+            <input type="number" [(ngModel)]="endPrice" name="endPrice" required>
+        </p>
+        <p>
+            <button type="submit" [disabled]="!f.valid">Search</button>
+        </p>
+    </form>
+</ng-container>
+
+<ng-container *ngIf="selectedValue == 'Transaction Type'">
+    <form #f="ngForm" (ngSubmit)="getTransactionsByType(f)">
+        <p>
+            <label>Type </label>
+            <input type="string" [(ngModel)]="searchType" name="searchType" required>
+        </p>
+        <p>
+            <button type="submit" [disabled]="!f.valid">Search</button>
+        </p>
+    </form>
+</ng-container>
+
+<!-- <pre> {{transactions |json}} </pre> -->
 <p>Transaction Table:</p>
 <div *ngFor="let transaction of transactions">
     <p>
