@@ -40,14 +40,17 @@ public class StockController {
 
     @RequestMapping(method = RequestMethod.POST)
     public void buyStock(@RequestBody Stock stock) {
-        if (stockService.getStockBySymbol(stock.getSymbol()) == null) {
-            stockService.buyStock(stock);
-        } else {
-            stockService.addStockQty(stock);
-        }
         Transaction vo = transcVO(stock);
         vo.setType("BUY");
-        transactionService.addTransaction(vo);
+        if (stockService.getStockBySymbol(stock.getSymbol()) == null) {
+            stockService.buyStock(stock);
+            transactionService.addTransaction(vo);
+        } else {
+            transactionService.addTransaction(vo);
+            stockService.addStockQty(stock);
+        }
+        
+        
 
     }
 
@@ -55,6 +58,9 @@ public class StockController {
     public void sellStock(@RequestBody Stock stock) {
         // Make sure the stock to be sold is within the stock portfolio
         if (stockService.getStockBySymbol(stock.getSymbol()) != null){
+            Transaction vo = transcVO(stock);
+            vo.setType("SELL");
+            transactionService.addTransaction(vo);
             int portfolioQty = stockService.getStockBySymbol(stock.getSymbol()).getQty();
             // Make sure the quantity of stock being sold is smaller than the stock number in portfolio
             if (portfolioQty >= stock.getQty()){
@@ -64,10 +70,6 @@ public class StockController {
             else{
                 stockService.decreaseStockQtyToZero(stock);
             }
-
-            Transaction vo = transcVO(stock);
-            vo.setType("SELL");
-            transactionService.addTransaction(vo);
         }
     }
 
@@ -76,7 +78,7 @@ public class StockController {
         transcVO.setStock(stock);
         transcVO.setQty(stock.getQty());
         transcVO.setSubmittedDateTime(LocalDateTime.now());
-        transcVO.setSubmittedPrice(19.99);
+        transcVO.setSubmittedPrice(stock.getTransactions().get(stock.getTransactions().size() - 1).getSubmittedPrice());
         return transcVO;
     }
 }
