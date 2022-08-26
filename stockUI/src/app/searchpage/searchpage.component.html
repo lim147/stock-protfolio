@@ -42,7 +42,7 @@
 <ng-container *ngIf="selectedValue == 'Date Range'">
   <form #f="ngForm" (ngSubmit)="getTransactionsBetweenDate(f)">
     <p>
-      <label>Type </label>
+      <label>Date Range </label>
       <input type="Date" [(ngModel)]="startDate" name="startDate" required>
       <input type="Date" [(ngModel)]="endDate" name="endDate" required>
     </p>
@@ -56,7 +56,7 @@
 <ng-container *ngIf="selectedValue == 'Price Range'">
   <form #f="ngForm" (ngSubmit)="getTransactionsBetweenPrice(f)">
     <p>
-      <label>Type </label>
+      <label>Price Range </label>
       <input type="number" [(ngModel)]="startPrice" name="startPrice" required>
       <input type="number" [(ngModel)]="endPrice" name="endPrice" required>
     </p>
@@ -80,9 +80,9 @@
 </ng-container>
 
 <!-- <pre> {{transactions |json}} </pre> -->
-<p style="color: rgba(255,255,255,0.6);font-family: Arial;" align="left">TRANSACTION TABLE: </p>
+<p style="color:rgba(255,255,255,0.6); font-family:Arial; text-align:center; padding-top:20px">TRANSACTION TABLE: </p>
     <div *ngFor="let transaction of transactions">
-      <p>
+      <p class="transaction-block">
         <span>Id: {{transaction.id}}</span><br>
         <span>Symbol: {{transaction.stockSymbol}}</span><br>
         <span>Name: {{transaction.name}}</span><br>

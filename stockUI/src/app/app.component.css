@@ -6,7 +6,9 @@ html {
 }
 
 body {
-  background-color: transparent;
+  background-color: #597ea6;
+  margin: auto;
+  text-align: center;
   font-family: 'Rubik Mono One', sans-serif;
 }
 

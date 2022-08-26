@@ -11,7 +11,10 @@ body {
 }
 
 body {
-  background: #454c4f;
+  /* background: #454c4f; */
+  background-color: #597ea6;
+  margin: auto;
+  text-align: center;
   font: 1em/1.5 'Droid Sans', sans-serif;
 }
 
@@ -72,11 +75,9 @@ body {
 }
 /*******************************************************************************************************/
 .pricing {
-  @include translate(-49%, -49.1%);
-  position: relative;
-  left: 50%;
-  top: 50%;
-  width: 310px;
+  /* left: 25%; */
+  /* top: 25%; */
+  width: 20%; /* 310px */
   font-size: 0;
   opacity: 1;
   transition: opacity .2s ease;
@@ -101,9 +102,9 @@ body {
   text-align: center;
 }
 
-.price-option--low .price-option__detail  { border-radius: .25em 0 0 0; }
-.price-option--mid .price-option__detail  { padding: 2.3em 0; border-radius: .25em .25em 0 0; }
-.price-option--high .price-option__detail { border-radius: 0 .25em 0 0; }
+.price-option--low .price-option__detail  {  } /* border-radius: .25em 0 0 0; */
+.price-option--mid .price-option__detail  { padding: 2.3em 0; } /* border-radius: .25em .25em 0 0; */
+.price-option--high .price-option__detail {  } /* border-radius: 0 .25em 0 0; */
 
 .price-option__cost,
 .price-option__type {
@@ -133,28 +134,14 @@ body {
   color: rgba(0,0,0,0.6);
 }
 
-.price-option--low .price-option__purchase  { background: #a7d155; border-radius: 0 0 0 .25em; }
-.price-option--mid .price-option__purchase  { background: #eada42; border-radius: 0 0 .25em .25em; }
-.price-option--high .price-option__purchase { background: #e54e4b; border-radius: 0 0 .25em 0; }
+.price-option--low .price-option__purchase  { background: #a7d155;} /*  border-radius: 0 0 0 .25em; } */
+.price-option--mid .price-option__purchase  { background: #eada42;} /* border-radius: 0 0 .25em .25em; } */
+.price-option--high .price-option__purchase { background: #e54e4b;} /* border-radius: 0 0 .25em 0; } */
 /***********************************************************************************************************/
 
-/*ul {*/
-/*  display: flex;*/
-/*  align-content: space-between;*/
-/*  list-style: none;*/
-/*  margin: 0;*/
-/*  padding: 0;*/
-/*}*/
-
-/*li {*/
-/*  flex-grow: 1;*/
-/*  border-radius: 50px;*/
-/*  list-style: none; display: inline-block;*/
-/*}*/
-
 #container{
-  display: flex;
   flex-direction: row;
+  float: left;
 }
 
 ul {

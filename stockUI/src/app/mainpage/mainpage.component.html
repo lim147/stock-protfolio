@@ -68,37 +68,22 @@
 <!--  </div>-->
 <!--</div>>-->
 
-  <p>STOCK TABLE: </p>
-  <div id="container" class='pricing' *ngFor="let stock of stocks">
-    <nav>
-      <ul>
-        <li>
-          <div class="[ price-option price-option--low ]">
-            <div class="price-option__detail">
-              <span class="price-option__cost">{{stock.symbol}}<br></span>
-              <span class="price-option__type">{{stock.name}}</span>
+
+  <p style="color:rgba(255,255,255,0.6); font-family:Arial; text-align:center; padding-top:20px;">STOCK TABLE: </p>
+  <ng-container *ngIf="showContainer">
+    <div id="container" class='pricing' *ngFor="let stock of stocks">
+      <nav>
+        <ul>
+          <li>
+            <div class="[ price-option price-option--low ]">
+              <div class="price-option__detail">
+                <span class="price-option__cost">{{stock.symbol}}<br></span>
+                <span class="price-option__type">{{stock.name}}</span>
+              </div>
+              <span class="price-option__purchase">Quantity: {{stock.qty}}</span>
             </div>
-            <span class="price-option__purchase">Quantity: {{stock.qty}}</span>
-          </div>
-        </li>
-
-<!--        <li>-->
-<!--          <div class="[ price-option price-option&#45;&#45;mid ]">-->
-<!--            <div class="price-option__detail">-->
-<!--              <span class="price-option__cost">{{stock}}</span>-->
-<!--              <span class="price-option__type">{{stock.name}}</span>-->
-<!--            </div>-->
-<!--            <a href="#" class="price-option__purchase">Quantity: {{stock.qty}}</a>-->
-<!--          </div>-->
-<!--        </li>-->
-      </ul>
-    </nav>
-  </div>
-
-
-<!--        <p>-->
-<!--            <span>Symbol: {{stock.symbol}}</span><br>-->
-<!--            <span>Name: {{stock.name}}</span><br>-->
-<!--            <span>Quantity: {{stock.qty}}</span><br>-->
-<!--        </p>-->
-
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </ng-container>
