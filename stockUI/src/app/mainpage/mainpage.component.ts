@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { Stock } from '../stock';
 import { StockService } from '../stock.service';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-mainpage',
@@ -10,14 +10,25 @@ import { NgForm } from '@angular/forms';
 })
 
 export class MainpageComponent {
+  searchFilters: string[] = ['Symbol', 'Name'];
+  searchFilterForm: FormGroup;
+  selectedValue: any;
   stocks! : Array<Stock>;
   searchSymbol! : string;
   searchName! : string;
 
-  constructor(private stockService : StockService) { }
+  constructor(private stockService : StockService) {
+    this.searchFilterForm = new FormGroup({
+      searchFilter: new FormControl(null)
+    });
+  }
 
   ngOnInit(): void {
     this.getAllStocks();
+  }
+
+  setSearchFilterType() {
+    this.selectedValue = this.searchFilterForm.value.searchFilter;
   }
 
   getAllStocks(){

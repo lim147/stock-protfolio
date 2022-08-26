@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Transaction } from '../transaction';
 import { TransactionService } from '../transaction.service';
 import { FormControl, FormGroup, NgForm } from '@angular/forms';
-import { filter } from 'minimatch';
 
 @Component({
   selector: 'app-searchpage',
