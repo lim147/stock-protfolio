@@ -14,6 +14,7 @@ export class TradingpageComponent {
   stockName! : string;
   stockQty! : number;
   stockSymbol! : string;
+  stockPrice! : number;
 
   tradingType! : string;
   messageDisplay : boolean = false;
@@ -35,7 +36,7 @@ export class TradingpageComponent {
   }
 
   buyStock(form: NgForm){
-    this.stockService.buyStock(this.stockSymbol, this.stockName, this.stockQty).subscribe({
+    this.stockService.buyStock(this.stockSymbol, this.stockName, this.stockQty, this.stockPrice).subscribe({
       next: (data:any) => this.stocks.push(data),
       error: (_:any)  => console.log("Error")
     });
@@ -43,7 +44,7 @@ export class TradingpageComponent {
   }
 
   sellStock(form: NgForm){
-    this.stockService.sellStock(this.stockSymbol, this.stockName, this.stockQty).subscribe({
+    this.stockService.sellStock(this.stockSymbol, this.stockName, this.stockQty, this.stockPrice).subscribe({
       next: (data:any) => this.stocks.push(data),
       error: (_:any)  => console.log("Error")
     });
