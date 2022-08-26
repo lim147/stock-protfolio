@@ -17,11 +17,12 @@
         <!-- Search by symbol: -->
         <form #f="ngForm" (ngSubmit)=" searchStockBySymbol(f)">
           <p>
-            <label>Symbol</label>
-            <input type="text" [(ngModel)]="searchSymbol" name="searchSymbol" required>
+<!--            <label>Symbol</label>-->
+            <input type="text" [(ngModel)]="searchSymbol" placeholder="Symbol" name="searchSymbol" required >
           </p>
           <p>
-            <button type="submit" [disabled]="!f.valid">Search By Symbol</button>
+            <button  type="submit" [disabled]="!f.valid"><span class="yesyes"> Search By Symbol </span>
+              </button>
           </p>
         </form>
       </li>
@@ -30,11 +31,12 @@
         <!-- Search by name: -->
         <form #f="ngForm" (ngSubmit)=" searchStockByName(f)">
           <p>
-            <label>Name</label>
-            <input type="text" [(ngModel)]="searchName" name="searchName" required>
+<!--            <label>Name</label>-->
+            <input type="text" [(ngModel)]="searchName" placeholder="Name" name="searchName" required>
           </p>
           <p>
-            <button type="submit" [disabled]="!f.valid">Search By Name</button>
+            <button class = "ccn" type="submit" [disabled]="!f.valid"><span class="yesyes"> Search By Symbol </span>
+            </button>
           </p>
         </form>
       </li>

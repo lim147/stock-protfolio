@@ -4,9 +4,9 @@
 }
 
 .cta span {
-  padding-bottom: 7px;
+  padding-bottom: 2px;
   letter-spacing: 4px;
-  font-size: 10px;
+  font-size: 12px;
   padding-right: 15px;
   text-transform: uppercase;
 }
@@ -14,10 +14,14 @@
 .cta svg {
   transform: translateX(-8px);
   transition: all 0.3s ease;
+
+
 }
 
 .cta:hover svg {
   transform: translateX(0);
+  color: rgba(255,255,255,0.6);
+
 }
 
 .cta:active svg {
@@ -26,7 +30,7 @@
 
 .hover-underline-animation {
   position: relative;
-  color: black;
+  text-underline-color: rgba(255,255,255,0.6);
   padding-bottom: 20px;
 }
 
@@ -48,6 +52,27 @@
   transform-origin: bottom left;
 }
 /*******************************************************************************************************/
+ccn {
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all .3s;
+  box-shadow: 6px 6px 12px #c5c5c5,
+  -6px -6px 12px #ffffff;
+}
+
+.yesyes:hover {
+  border: 1px solid white;
+}
+
+.yesyes:active {
+  box-shadow: 4px 4px 12px #c5c5c5,
+  -4px -4px 12px #ffffff;
+}
+/***********************************************************************************************************/
 ul {
   display: flex;
   list-style: none;
